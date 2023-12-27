@@ -1,0 +1,372 @@
+@import url('https://fonts.google.com/?query=montserrat+');
+
+:root {
+    /*-------- Colors ---------------*/
+    --color-black: #000000;
+    --color-white: #fff;
+    --color-grey: #ADADAD;
+
+    /*-------- Font Sizes  ----------*/
+    
+    --font-size-xxs: 14px;
+    --font-size-xs: 16px;
+    --font-size-s: 24px;
+    --font-size-m: 32px;
+    --font-size-l: 36px;
+
+    /*-------- Font Weight ----------*/
+    
+    --font-thin:100;
+    --font-extra-light:200;
+    --font-light: 300;
+    --font-regular: 400;
+    --font-medium: 500;
+    --font-semi-bold: 600;
+    --font-bold: 700;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+}
+
+hr {
+    display: block;
+    width: calc(100% - 6em);
+    border-top: 1px solid var(--color-black);
+    text-align: center;
+    row-gap: 2em;
+}
+
+.title {
+    font-size: var(--font-size-l);
+    font-weight: var(--font-bold);
+    margin-bottom: 0;
+}
+
+.title a {
+    text-decoration: none;
+    color: #000000;
+}
+
+.section-title {
+    font-size: var(--fotn-size-m);
+    font-weight: var(--font-semi-bold);
+}
+
+.container-sobre {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 1fr 0.8fr 0fr 1fr 1fr;
+    grid-template-rows: 2fr 2fr 2fr 2fr 2fr;
+
+}
+
+.button-container a.button-link1 {
+    text-decoration: none;
+    color: black;
+    padding: 10px 100px;
+    margin: 10px 10px; /* Add top and bottom margins */
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.container-tab{
+    display: grid;
+    height: 23vh;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 2fr 2fr 2fr 2fr 2fr;
+    justify-content: center;
+    align-items: center;
+}
+
+#titulo-fita {
+    grid-row-start: 1;
+    grid-row-end: 1;
+    grid-column-start: 3;
+    grid-column-end: 3;
+    text-align: center;
+}
+
+#button-container {
+    grid-row-start: 2;
+    grid-row-end: 2;
+    grid-column-start: 1;
+    grid-column-end: 6;
+    margin-top: 0.3em;
+    text-align: center;
+}
+
+#button-container a {
+    text-decoration: none;
+    color: black;
+    padding: 0px 19%; /* Adjust horizontal padding for space between links */
+    margin: 20px 10px; /* Adjust top and bottom margin for space from the hr and between links */
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+#movie-details-titles1{
+    font-size: 2.5em;
+    margin-left: 1.1em;
+    font-weight: 300;
+}
+
+#movie-details-ano1{
+    font-size: 1.3em;
+    margin-left: 2em;
+    font-weight: 200;
+    display: inline;
+}
+
+
+#teste{
+margin-top: 0.9em;
+margin-bottom: 0.9em;
+}
+
+#linha-mobile{
+    display: none;
+}
+
+#meuCarrossel {
+    margin-right: 2.7em;
+    margin-left: 2.7em;
+}
+.carousel-container {
+    width: calc(100% - 6em);
+    text-align: center;
+    margin: 20px 0;
+    color: var(--color-white);
+}
+
+.carousel-caption {
+    width: 100%;
+    padding: 20px;
+    background-image: linear-gradient(rgba(0, 255, 225, 0), rgba(20, 20, 20, 0.841));
+}
+
+.carousel-caption h3 {
+    font-size: var(--font-size-m);
+    font-weight: var(--font-semi-bold);
+    margin-bottom: 0;
+    color: var(--color-white);
+  
+}
+
+.carousel-caption p {
+    font-size: var(--font-size-xs);
+    color: var(--color-white);
+    margin-top: 5px;
+}
+
+
+
+
+.carousel-inner{
+    width: 100%;
+}
+
+
+
+.carousel-item{
+    max-height: 30em; 
+    
+}
+
+.container-info{
+    display: grid;
+    height: 75vh;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 2fr 2fr 2fr 2fr 2fr;
+}
+
+#info-texto{
+    grid-row-start: 1;
+    grid-row-end: 4;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    margin-left: 2.7em;
+    margin-top: 4em;
+}
+
+#info-texto h4{
+    display: inline-block;
+    font-weight: var(--font-bold);
+    font-size: var(--font-size-xs);
+}
+
+#info-texto p{
+    display: inline;
+    margin: 0;
+    word-break:keep-all;
+}
+
+#info-imagem{
+    grid-row-start: 1;
+    grid-row-end: 3;
+    grid-column-start: 5;
+    grid-column-end: 5;
+    margin-top: 3em;
+    margin-right: 0em;
+    margin-left: 4.5em;
+}
+
+.imagem-item{
+    height: 23em;
+
+}
+
+@media only screen and (max-width: 750px) {
+
+#linha-mobile{
+    display: block;
+    width: calc(100% - 6em);
+    border-top: 1px solid var(--color-black);
+    text-align: center;
+    row-gap: 2em;
+    grid-row-start: 2;
+    grid-row-end: 2;
+    grid-column-start: 1;
+    grid-column-end: 6;
+    margin-top: 0em;
+}
+
+#about-section {
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 1;
+    grid-column-end: 6;
+    margin-left: 3em;
+    margin-top: 1em;
+    margin-right: 3em;
+}
+
+.title {
+    text-align: left;
+    margin-left: 1.1em;
+}
+
+#titulo-fita {
+    grid-row-start: 1;
+    grid-row-end: 1;
+    grid-column-start: 1;
+    grid-column-end: 1;
+    text-align: left;
+    margin-top: 2em;
+}
+
+
+hr:first-child {
+    display: none; /* Hide the first hr in mobile view */
+}
+
+hr:nth-child(3) {
+display: none;
+}
+
+.container-tab{
+    display: grid;
+    height: 18vh;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 2fr 2fr 2fr 2fr 2fr;
+    justify-content: left;
+    align-items: left
+}
+
+
+
+#button-container {
+    grid-row-start: 1;
+    grid-row-end: 1;
+    grid-column-start: 2;
+    grid-column-end: 6;
+    margin-top: 2.6em;
+    text-align: center;
+}
+
+#button-container a {
+    text-decoration: none;
+    color: black;
+    padding: 10px 2em; 
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+#teste{
+   margin-left: 3em;
+   text-align: right;
+   margin-right: 0.5em;
+}
+
+#meuCarrossel {
+    margin-right: 2.7em;
+    margin-left: 2.7em;
+}
+.carousel-container {
+    width: calc(100% - 6em);
+    text-align: center;
+    margin: 20px 0;
+    color: var(--color-white);
+}
+
+.carousel-caption {
+    text-align: left;
+}
+
+.carousel-item{
+    max-height: 13em; 
+}
+.container-info{
+    display: grid;
+    height: 130vh;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 2fr 2fr 2fr 2fr 2fr;
+}
+
+#movie-details-titles1{
+    font-size: 1.7em;
+    margin-left: 1.55em;
+    font-weight: 300;
+}
+
+#info-texto{
+    grid-row-start: 1;
+    grid-row-end: 4;
+    grid-column-start: 1;
+    grid-column-end: 5;
+    margin-left: 0.3em;
+    margin-top: 4em;
+}
+
+#info-texto h4{
+    display: inline-block;
+    font-weight: var(--font-bold);
+    font-size: var(--font-size-xs);
+}
+
+#info-texto p{
+    display: inline;
+    margin: 0;
+    word-break:keep-all;
+}
+
+#info-imagem{
+    grid-row-start: 5;
+    grid-row-end: 5;
+    grid-column-start: 3;
+    grid-column-end: 3;
+    margin-top: 0em;
+    margin-right:3.5em;
+    margin-bottom: 5em;
+}
+
+.imagem-item{
+    height: 20em;
+}
+}

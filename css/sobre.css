@@ -1,0 +1,224 @@
+@import url('https://fonts.google.com/?query=montserrat+');
+
+:root {
+    /*-------- Colors ---------------*/
+    --color-black: #000000;
+    --color-white: #fff;
+    --color-grey: #ADADAD;
+
+    /*-------- Font Sizes  ----------*/
+    
+    --font-size-xxs: 14px;
+    --font-size-xs: 16px;
+    --font-size-s: 24px;
+    --font-size-m: 32px;
+    --font-size-l: 36px;
+
+    /*-------- Font Weight ----------*/
+    
+    --font-thin:100;
+    --font-extra-light:200;
+    --font-light: 300;
+    --font-regular: 400;
+    --font-medium: 500;
+    --font-semi-bold: 600;
+    --font-bold: 700;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+}
+
+hr {
+    display: block;
+    width: calc(100% - 6em);
+    border-top: 1px solid var(--color-black);
+    text-align: center;
+    row-gap: 2em;
+}
+
+hr:first-child {
+    
+}
+
+
+hr:nth-child(2) {
+ 
+}
+
+.title {
+    font-size: var(--font-size-l);
+    font-weight: var(--font-bold);
+    margin-bottom: 0;
+}
+
+.title a {
+    text-decoration: none;
+    color: #000000;
+}
+
+.section-title {
+    font-size: var(--fotn-size-m);
+    font-weight: var(--font-semi-bold);
+}
+
+.container-sobre {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 1fr 0.8fr 0fr 1fr 1fr;
+    grid-template-rows: 2fr 2fr 2fr 2fr 2fr;
+
+}
+
+#about-section {
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    margin-left: 3em;
+    margin-top: 0em;
+}
+
+.button-container a.button-link1 {
+    text-decoration: none;
+    color: black;
+    padding: 10px 100px;
+    margin: 10px 10px; /* Add top and bottom margins */
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.container-tab{
+    display: grid;
+    height: 25vh;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 2fr 2fr 2fr 2fr 2fr;
+    justify-content: center;
+    align-items: center;
+}
+
+#titulo-fita {
+    grid-row-start: 1;
+    grid-row-end: 1;
+    grid-column-start: 3;
+    grid-column-end: 3;
+    text-align: center;
+}
+
+#button-container {
+    grid-row-start: 2;
+    grid-row-end: 2;
+    grid-column-start: 1;
+    grid-column-end: 6;
+    margin-top: 0.3em;
+    text-align: center;
+}
+
+#button-container a {
+    text-decoration: none;
+    color: black;
+    padding: 0px 19%; /* Adjust horizontal padding for space between links */
+    margin: 20px 10px; /* Adjust top and bottom margin for space from the hr and between links */
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+#teste{
+margin-top: 0.9em;
+margin-bottom: 0.9em;
+}
+
+#linha-mobile{
+    display: none;
+}
+
+@media only screen and (max-width: 750px) {
+    .container-sobre{
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 2fr 2fr 2fr 2fr 2fr;
+}
+#linha-mobile{
+    display: block;
+    width: calc(100% - 6em);
+    border-top: 1px solid var(--color-black);
+    text-align: center;
+    row-gap: 2em;
+    grid-row-start: 2;
+    grid-row-end: 2;
+    grid-column-start: 1;
+    grid-column-end: 6;
+}
+
+#about-section {
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 1;
+    grid-column-end: 6;
+    margin-left: 3em;
+    margin-top: 0em;
+    margin-right: 3em;
+}
+
+.title {
+    text-align: left;
+    margin-left: 1.1em;
+}
+
+
+hr:first-child {
+    display: none; /* Hide the first hr in mobile view */
+}
+
+hr:nth-child(3) {
+display: none;
+}
+
+.container-tab{
+    display: grid;
+    height: 18vh;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 2fr 2fr 2fr 2fr 2fr;
+    justify-content: left;
+    align-items: left
+}
+
+#titulo-fita {
+    grid-row-start: 1;
+    grid-row-end: 1;
+    grid-column-start: 1;
+    grid-column-end: 1;
+    text-align: left;
+}
+
+#button-container {
+    grid-row-start: 1;
+    grid-row-end: 1;
+    grid-column-start: 2;
+    grid-column-end: 6;
+    margin-top: 2.6em;
+    text-align: center;
+}
+
+#button-container a {
+    text-decoration: none;
+    color: black;
+    padding: 10px 2em; 
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+#teste{
+   margin-left: 3em;
+   text-align: right;
+   margin-right: 0.5em;
+}
+
+}

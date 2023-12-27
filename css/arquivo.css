@@ -1,0 +1,428 @@
+@import url('https://fonts.google.com/?query=montserrat+');
+
+:root {
+    /*-------- Colors ---------------*/
+    --color-black: #000000;
+    --color-white: #fff;
+    --color-grey: #ADADAD;
+
+    /*-------- Font Sizes  ----------*/
+    
+    --font-size-xxs: 14px;
+    --font-size-xs: 16px;
+    --font-size-s: 24px;
+    --font-size-m: 32px;
+    --font-size-l: 36px;
+
+    /*-------- Font Weight ----------*/
+    
+    --font-thin:100;
+    --font-extra-light:200;
+    --font-light: 300;
+    --font-regular: 400;
+    --font-medium: 500;
+    --font-semi-bold: 600;
+    --font-bold: 700;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+}
+
+hr {
+    display: block;
+    width: calc(100% - 6em);
+    border-top: 1px solid var(--color-black);
+    text-align: center;
+    row-gap: 2em;
+}
+
+hr:first-child {
+    
+}
+
+
+hr:nth-child(2) {
+ 
+}
+
+.title {
+    font-size: var(--font-size-l);
+    font-weight: var(--font-bold);
+    margin-bottom: 0;
+}
+
+.title a {
+    text-decoration: none;
+    color: #000000;
+}
+
+.section-title {
+    font-size: var(--fotn-size-m);
+    font-weight: var(--font-semi-bold);
+}
+
+#about-section {
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    margin-left: 3em;
+    margin-top: 3em;
+}
+
+.button-container a.button-link1 {
+    text-decoration: none;
+    color: black;
+    padding: 10px 100px;
+    margin: 10px 10px; /* Add top and bottom margins */
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.container-tab{
+    display: grid;
+    height: 35vh;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 2fr 2fr 2fr 2fr 2fr;
+    justify-content: center;
+    align-items: center;
+}
+
+#titulo-fita {
+    grid-row-start: 1;
+    grid-row-end: 1;
+    grid-column-start: 3;
+    grid-column-end: 3;
+    text-align: center;
+}
+
+#button-container {
+    grid-row-start: 2;
+    grid-row-end: 2;
+    grid-column-start: 1;
+    grid-column-end: 6;
+    margin-top: 0.3em;
+    text-align: center;
+}
+
+#button-container a {
+    text-decoration: none;
+    color: black;
+    padding: 0px 19%; /* Adjust horizontal padding for space between links */
+    margin: 20px 10px; /* Adjust top and bottom margin for space from the hr and between links */
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+#teste{
+margin-top: 0.9em;
+margin-bottom: 0.9em;
+}
+
+#button-container2 {
+    grid-row-start: 3;
+    grid-row-end: 3;
+    grid-column-start: 1;
+    grid-column-end: 6;
+    margin-top: 0.3em;
+    text-align: center;
+}
+
+#button-container2 a {
+    text-decoration: none;
+    color: black;
+    padding: 20px 8.3%; /* Adjust horizontal padding for space between links */
+    margin: 20px 20px; /* Adjust top and bottom margin for space from the hr and between links */
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    
+}
+
+
+#teste2{
+margin-top: 0em;
+margin-bottom: 0em;
+display: flex;
+align-items: center;
+}
+
+
+
+#linha-mobile{
+    display: none;
+}
+
+/* arquivo.css */
+.center-container {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    height: 100vh;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 2fr 2fr 2fr 2fr 2fr;
+    margin-top: 2em;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns */
+    gap: 5em; /* Adjust the gap between movies */
+}
+
+
+.movie-item {
+    width: 18em;
+    margin-bottom: 16px; /* Adjust the margin between rows of movies */
+}
+
+.movie-item img {
+    width: 100%;
+    height: 25em;
+}
+
+/* arquivo.css */
+.color-rectangle {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.icon-container {
+    text-align: right;
+    padding: 10px;
+}
+.icon {
+    display: inline-block;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.fill{
+    grid-row-start: 4;
+    grid-row-end: 4;
+    grid-column-start: 3;
+    grid-column-end: 3;
+    margin-left: 2em;
+    margin-top: 1em;
+    margin-bottom: 2em;
+}
+
+.option {
+    margin-right: 35px; /* Adjust the right margin for space between options */
+    cursor: pointer;
+}
+
+.color-square {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+#search-input {
+    margin-left: 3em;
+    padding: 10px;
+    width: 300px;
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    outline: none;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.special{
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border: none;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    margin-right: 15em;
+}
+
+#button-container2 button{
+    margin-left: 1.9em;
+}
+
+@media only screen and (max-width: 750px) {
+
+#linha-mobile{
+    display: block;
+    width: calc(100% - 6em);
+    border-top: 1px solid var(--color-black);
+    text-align: center;
+    row-gap: 2em;
+    grid-row-start: 2;
+    grid-row-end: 2;
+    grid-column-start: 1;
+    grid-column-end: 6;
+}
+
+
+.title {
+    text-align: left;
+    margin-left: 1.1em;
+}
+
+
+hr:first-child {
+    display: none; /* Hide the first hr in mobile view */
+}
+
+hr:nth-child(3) {
+display: none;
+}
+
+.container-tab{
+    display: grid;
+    height: 30vh;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 2fr 2fr 2fr 2fr 2fr;
+    justify-content: left;
+    align-items: left
+}
+
+#titulo-fita {
+    grid-row-start: 1;
+    grid-row-end: 1;
+    grid-column-start: 1;
+    grid-column-end: 1;
+    text-align: left;
+}
+
+#button-container {
+    grid-row-start: 1;
+    grid-row-end: 1;
+    grid-column-start: 2;
+    grid-column-end: 6;
+    margin-top: 2.6em;
+    text-align: center;
+}
+
+#button-container a {
+    text-decoration: none;
+    color: black;
+    padding: 10px 2em; 
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+#teste{
+   margin-left: 3em;
+   text-align: right;
+   margin-right: 0.5em;
+}
+
+#button-container2 a {
+    text-decoration: none;
+    color: black;
+    padding: 20px 8%; /* Adjust horizontal padding for space between links */
+    margin: 20px 20px; /* Adjust top and bottom margin for space from the hr and between links */
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+#teste2{
+margin-top: 0em;
+margin-bottom: 1em;
+}
+
+.center-container {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    height: 100vh;
+    grid-template-columns: 1fr;
+    grid-template-rows: 2fr 2fr 2fr 2fr 2fr;
+}
+
+.grid-container {
+    display: grid;
+    gap: 1.5em; /* Further reduced the gap between movies */
+    grid-template-columns: repeat(2, 1fr); /* Display 2 movies per row in mobile view */
+    margin-left: 0em; /* Adjusted the margin */
+}
+
+.movie-item {
+    width: 10em;; /* Adjusted the width of the movie items */
+    margin-bottom: 1em; /* Further reduced the margin between rows of movies */
+}
+
+.movie-item img {
+    width: 100%;
+    height: 16em;
+}
+
+#search-input {
+    margin-left: 3em;
+    padding: 10px;
+    width: 100px;
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    outline: none;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.special{
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border: none;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    margin-right: 0.2em;
+}
+
+#button-container2 button{
+    margin-left: 2em;
+}
+
+
+
+.fill{
+    grid-row-start: 4;
+    grid-row-end: 4;
+    grid-column-start: 1;
+    grid-column-end: 6;
+    margin-left: 4em;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    overflow-x: auto;
+}
+
+.option {
+    margin-right: 15px; /* Adjust the right margin for space between options */
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.color-square {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+
+
+
+}

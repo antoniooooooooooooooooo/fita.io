@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fita</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/sytles.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+</head>
+
+<body>
+
+    <div class="container-tab">
+        <div id="titulo-fita">
+            <p class="title"> <a href="index.html">FITA</a></p>
+        </div>
+        <div id="button-container">
+            <hr>
+            <div id="teste">
+                <a href="Arquivo.html">Arquivo</a>
+                <a href="Sobre.html">Sobre</a>
+            </div>
+            <hr>
+        </div>
+        <hr id="linha-mobile">
+    </div>
+
+    <div id="meuCarrossel" class="carousel slide" data-ride="carousel">
+        
+        <div class="carousel-inner" id="carouselInner">
+            
+            <div class="carousel-display active" id="carousel-display">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5 class="movie-name"></h5>
+                </div>
+            </div>
+            
+       
+            <div class="carousel-display" id="carousel-display">
+   
+            </div>
+        </div>
+       
+        <a class="carousel-control-prev" href="#meuCarrossel" role="button" data-slide="prev">
+            
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Anterior</span>
+        </a>
+
+        <a class="carousel-control-next" href="#meuCarrossel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Próximo</span>
+        </a>
+
+    </div>
+
+    
+        <p id="section-title">Para esta semana</p>
+        <div class="center-container">
+        <div class="grid-container"></div>
+        </div>
+        
+   
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+       // Fetch data from the API
+fetch('https://api.cosmicjs.com/v3/buckets/fita-production/objects?pretty=true&query=%7B%22type%22:%22movies%22%7D&limit=10&read_key=nMpklsOUy4PFd7cy1DtpXwvKDAst2IXyCGC4I4x2cDynYnbkUF&depth=1&props=slug,title,metadata,id,')
+    .then(response => response.json())
+    .then(data => {
+        // Reference to the grid container
+        const gridContainer = document.querySelector('.grid-container');
+
+        // Loop through each movie and create a grid item
+        data.objects.forEach(movie => {
+            // Check if the movie is for this week (semana is true)
+            if (movie.metadata.semana === true) {
+                // Create a grid item
+                const gridItem = document.createElement('div');
+                gridItem.className = 'grid-item';
+
+                // Create a link to the movie details page
+                const movieLink = document.createElement('a');
+                movieLink.href = `individual.html?slug=${movie.id}`; // Pass the movie slug as a query parameter
+                movieLink.innerHTML = `<img src="${movie.metadata.photo.url}"  alt="${movie.title}">`;
+
+                // Append the link to the grid item
+                gridItem.appendChild(movieLink);
+
+                // Append the grid item to the grid container
+                gridContainer.appendChild(gridItem);
+            }
+        });
+    })
+    .catch(error => console.error('Error fetching data:', error));
+
+    </script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Fetch data from the API
+        fetch('https://api.cosmicjs.com/v3/buckets/fita-production/objects?pretty=true&query=%7B%22type%22:%22movies%22%7D&limit=10&read_key=nMpklsOUy4PFd7cy1DtpXwvKDAst2IXyCGC4I4x2cDynYnbkUF&depth=1&props=slug,title,metadata,id,')
+            .then(response => response.json())
+            .then(data => {
+                // Reference to the carousel inner container
+                const carouselInner = document.getElementById('carouselInner');
+                const carousel = new bootstrap.Carousel(document.getElementById('meuCarrossel')); // Initialize the Carousel
+
+                // Separate indices for carousel and film section
+                let carouselIndex = 0;
+                let filmSectionIndex = 0;
+
+                // Loop through each movie
+                data.objects.forEach((movie, index) => {
+                    // Check if the movie is for this week (semana is true)
+                    if (movie.metadata.semana === true) {
+                        // Create a carousel item
+                        const carouselItem = document.createElement('div');
+                        carouselItem.className = carouselIndex === 0 ? 'carousel-item active' : 'carousel-item';
+
+                        // Create a link to the movie details page
+                        const movieLink = document.createElement('a');
+                        movieLink.href = `individual.html?slug=${movie.id}`;
+
+                        // Create an element for the movie image
+                        const movieImage = document.createElement('img');
+                        movieImage.src = movie.metadata.photo1 ? movie.metadata.photo1.url : '';
+                        movieImage.alt = `Imagem ${movie.title}`;
+                        movieImage.className = 'd-block w-100';
+
+                        // Create an element for the movie name
+                        const movieName = document.createElement('h5');
+                        movieName.textContent = movie.title;
+                        movieName.className = 'movie-name'; // Add a class name
+
+                        // Create an element for the movie duration
+                        const movieDuration = document.createElement('p');
+                        movieDuration.textContent = `Duração: ${movie.metadata.duracao || 'N/A'}`;
+                        movieDuration.className = 'movie-duration'; // Add a class name
+
+                        // Append the elements to the movie link
+                        movieLink.appendChild(movieImage);
+                        movieLink.appendChild(movieName);
+                        movieLink.appendChild(movieDuration);
+
+                        // Append the link to the carousel item
+                        carouselItem.appendChild(movieLink);
+
+                        // Append the carousel item to the carousel inner container
+                        carouselInner.appendChild(carouselItem);
+
+                        // Increment carousel index
+                        carouselIndex++;
+
+                        // Event listener for the Bootstrap Carousel slide event
+                        carouselInner.addEventListener('slide.bs.carousel', event => {
+                            const activeIndex = event.to;
+                            const activeCaption = document.querySelector('.carousel-display.active .movie-name');
+
+                            // Update the movie name in the caption of the active carousel item
+                            activeCaption.textContent = data.objects[activeIndex].title;
+                        });
+
+                        // Increment film section index
+                        filmSectionIndex++;
+                    }
+                });
+
+                $('#meuCarrossel').carousel({
+                    interval: 2500
+                });
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    });
+</script>
+
+
+
+</body>
+
+</html>
