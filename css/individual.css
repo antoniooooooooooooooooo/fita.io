@@ -222,6 +222,7 @@ margin-bottom: 0.9em;
 
 }
 
+
 @media only screen and (max-width: 750px) {
 
 #linha-mobile{
@@ -326,8 +327,8 @@ display: none;
 .container-info{
     display: grid;
     height: 150vh;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 2fr 2fr 2fr 2fr 2fr;
+    grid-template-columns: 1fr;
+    grid-template-rows: 7em 7em 7em 7em 7em 7em 7em;
 }
 
 #movie-details-titles1{
@@ -358,12 +359,12 @@ display: none;
 }
 
 #info-imagem{
-    grid-row-start: 5;
-    grid-row-end: 5;
+    grid-row-start: 6;
+    grid-row-end: 6;
     grid-column-start: 3;
     grid-column-end: 3;
-    margin-top: 30em;
-    margin-right:3.5em;
+    margin-top: 0em;
+    margin-right:5.5em;
     margin-bottom: 5em;
 }
 
@@ -371,4 +372,13 @@ display: none;
     width: 12em;
     height: 18em;
 }
+
+.description {
+    max-height: 6em; /* Set the maximum height for the description */
+    overflow: hidden; /* Hide the overflow content */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    line-height: 1.5em; /* Set the line height to control the number of visible lines */
+}
+
 }
