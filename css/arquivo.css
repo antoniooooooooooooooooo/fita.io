@@ -32,21 +32,21 @@ body {
     overflow-x: hidden;
 }
 
-hr {
-    display: block;
-    width: calc(100% - 6em);
-    border-top: 1px solid var(--color-black);
+.container-top{
+    display: grid;
+    height: 35vh;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 2fr 2fr 2fr 2fr 2fr;
+    justify-content: center;
+    align-items: center;
+}
+
+#titulo-fita {
+    grid-row-start: 1;
+    grid-row-end: 1;
+    grid-column-start: 3;
+    grid-column-end: 3;
     text-align: center;
-    row-gap: 2em;
-}
-
-hr:first-child {
-    
-}
-
-
-hr:nth-child(2) {
- 
 }
 
 .title {
@@ -74,34 +74,18 @@ hr:nth-child(2) {
     margin-top: 3em;
 }
 
-.button-container a.button-link1 {
+.links a.button-link1 {
     text-decoration: none;
     color: black;
     padding: 10px 100px;
-    margin: 10px 10px; /* Add top and bottom margins */
+    margin: 10px 10px;
     border: none;
     background-color: transparent;
     cursor: pointer;
 }
 
-.container-tab{
-    display: grid;
-    height: 35vh;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 2fr 2fr 2fr 2fr 2fr;
-    justify-content: center;
-    align-items: center;
-}
 
-#titulo-fita {
-    grid-row-start: 1;
-    grid-row-end: 1;
-    grid-column-start: 3;
-    grid-column-end: 3;
-    text-align: center;
-}
-
-#button-container {
+#links-container {
     grid-row-start: 2;
     grid-row-end: 2;
     grid-column-start: 1;
@@ -110,22 +94,22 @@ hr:nth-child(2) {
     text-align: center;
 }
 
-#button-container a {
+#links-container a {
     text-decoration: none;
     color: black;
-    padding: 0px 19%; /* Adjust horizontal padding for space between links */
-    margin: 20px 10px; /* Adjust top and bottom margin for space from the hr and between links */
+    padding: 0px 19%;
+    margin: 20px 10px;
     border: none;
     background-color: transparent;
     cursor: pointer;
 }
 
-#teste{
+#links{
 margin-top: 0.9em;
 margin-bottom: 0.9em;
 }
 
-#button-container2 {
+#links-container2 {
     grid-row-start: 3;
     grid-row-end: 3;
     grid-column-start: 1;
@@ -134,11 +118,11 @@ margin-bottom: 0.9em;
     text-align: center;
 }
 
-#button-container2 a {
+#links-container2 a {
     text-decoration: none;
     color: black;
-    padding: 20px 8.3%; /* Adjust horizontal padding for space between links */
-    margin: 20px 20px; /* Adjust top and bottom margin for space from the hr and between links */
+    padding: 20px 8.3%;
+    margin: 20px 20px;
     border: none;
     background-color: transparent;
     cursor: pointer;
@@ -146,7 +130,7 @@ margin-bottom: 0.9em;
 }
 
 
-#teste2{
+#links2{
 margin-top: 0em;
 margin-bottom: 0em;
 display: flex;
@@ -154,12 +138,18 @@ align-items: center;
 }
 
 
+hr {
+    display: block;
+    width: calc(100% - 6em);
+    border-top: 1px solid var(--color-black);
+    text-align: center;
+    row-gap: 2em;
+}
 
 #linha-mobile{
     display: none;
 }
 
-/* arquivo.css */
 .center-container {
     display: flex;
     justify-content: center;
@@ -172,14 +162,14 @@ align-items: center;
 
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 columns */
-    gap: 5em; /* Adjust the gap between movies */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5em;
 }
 
 
 .movie-item {
     width: 18em;
-    margin-bottom: 16px; /* Adjust the margin between rows of movies */
+    margin-bottom: 16px;
 }
 
 .movie-item img {
@@ -216,7 +206,7 @@ align-items: center;
 }
 
 .option {
-    margin-right: 35px; /* Adjust the right margin for space between options */
+    margin-right: 35px;
     cursor: pointer;
 }
 
@@ -252,11 +242,33 @@ align-items: center;
     margin-right: 15em;
 }
 
-#button-container2 button{
+#links-container2 button{
     margin-left: 1.9em;
 }
 
 @media only screen and (max-width: 750px) {
+
+    .container-top{
+        display: grid;
+        height: 30vh;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: 2fr 2fr 2fr 2fr 2fr;
+        justify-content: left;
+        align-items: left
+    }
+    
+    #titulo-fita {
+        grid-row-start: 1;
+        grid-row-end: 1;
+        grid-column-start: 1;
+        grid-column-end: 1;
+        text-align: left;
+    }
+
+    .title {
+        text-align: left;
+        margin-left: 1.1em;
+    }
 
 #linha-mobile{
     display: block;
@@ -270,39 +282,16 @@ align-items: center;
     grid-column-end: 6;
 }
 
-
-.title {
-    text-align: left;
-    margin-left: 1.1em;
-}
-
-
 hr:first-child {
-    display: none; /* Hide the first hr in mobile view */
+    display: none;
 }
 
 hr:nth-child(3) {
 display: none;
 }
 
-.container-tab{
-    display: grid;
-    height: 30vh;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 2fr 2fr 2fr 2fr 2fr;
-    justify-content: left;
-    align-items: left
-}
 
-#titulo-fita {
-    grid-row-start: 1;
-    grid-row-end: 1;
-    grid-column-start: 1;
-    grid-column-end: 1;
-    text-align: left;
-}
-
-#button-container {
+#links-container {
     grid-row-start: 1;
     grid-row-end: 1;
     grid-column-start: 2;
@@ -311,7 +300,7 @@ display: none;
     text-align: center;
 }
 
-#button-container a {
+#links-container a {
     text-decoration: none;
     color: black;
     padding: 10px 2em; 
@@ -320,23 +309,23 @@ display: none;
     cursor: pointer;
 }
 
-#teste{
+#links{
    margin-left: 3em;
    text-align: right;
    margin-right: 0.5em;
 }
 
-#button-container2 a {
+#links2 a {
     text-decoration: none;
     color: black;
-    padding: 20px 8%; /* Adjust horizontal padding for space between links */
-    margin: 20px 20px; /* Adjust top and bottom margin for space from the hr and between links */
+    padding: 20px 8%;
+    margin: 20px 20px;
     border: none;
     background-color: transparent;
     cursor: pointer;
 }
 
-#teste2{
+#links2{
 margin-top: 0em;
 margin-bottom: 1em;
 }
@@ -352,14 +341,14 @@ margin-bottom: 1em;
 
 .grid-container {
     display: grid;
-    gap: 1.5em; /* Further reduced the gap between movies */
-    grid-template-columns: repeat(2, 1fr); /* Display 2 movies per row in mobile view */
-    margin-left: 0em; /* Adjusted the margin */
+    gap: 1.5em;
+    grid-template-columns: repeat(2, 1fr);
+    margin-left: 0em;
 }
 
 .movie-item {
-    width: 10em;; /* Adjusted the width of the movie items */
-    margin-bottom: 1em; /* Further reduced the margin between rows of movies */
+    width: 10em;
+    margin-bottom: 1em; 
 }
 
 .movie-item img {
@@ -409,7 +398,7 @@ margin-bottom: 1em;
 }
 
 .option {
-    margin-right: 15px; /* Adjust the right margin for space between options */
+    margin-right: 15px;
     cursor: pointer;
     font-size: 14px;
 }
@@ -421,8 +410,5 @@ margin-bottom: 1em;
     display: inline-block;
     cursor: pointer;
 }
-
-
-
 
 }

@@ -32,12 +32,21 @@ body {
     overflow-x: hidden;
 }
 
+.container-top{
+    display: grid;
+    height: 25vh;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 2fr 2fr 2fr 2fr 2fr;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2em;
+}
 
-hr {
-    display: block;
-    width: calc(100% - 6em);
-    margin: 0 3em;
-    border-top: 1px solid var(--color-black);
+#titulo-fita {
+    grid-row-start: 1;
+    grid-row-end: 1;
+    grid-column-start: 3;
+    grid-column-end: 3;
     text-align: center;
 }
 
@@ -52,13 +61,12 @@ hr {
     color: #000000;
 }
 
-
-.button-container {
+.links-container {
     text-align: center;
     margin: 20px 0;
 }
 
-.button-container a {
+.links-container a {
     text-decoration: none;
     color: black;
     padding: 10px 100px;
@@ -69,7 +77,7 @@ hr {
 }
 
 
-#button-container {
+#links-container {
     grid-row-start: 2;
     grid-row-end: 2;
     grid-column-start: 1;
@@ -78,23 +86,31 @@ hr {
     text-align: center;
 }
 
-#button-container a {
+#links-container a {
     text-decoration: none;
     color: black;
-    padding: 0px 19%; /* Adjust horizontal padding for space between links */
-    margin: 20px 10px; /* Adjust top and bottom margin for space from the hr and between links */
+    padding: 0px 19%; 
+    margin: 20px 10px;
     border: none;
     background-color: transparent;
     cursor: pointer;
 }
 
-#teste{
+#links{
 margin-top: 0.9em;
 margin-bottom: 0.9em;
 }
 
 #linha-mobile{
     display: none;
+}
+
+hr {
+    display: block;
+    width: calc(100% - 6em);
+    margin: 0 3em;
+    border-top: 1px solid var(--color-black);
+    text-align: center;
 }
 
 #meuCarrossel {
@@ -152,14 +168,14 @@ margin-bottom: 0.9em;
 
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 columns */
-    gap: 5em; /* Adjust the gap between movies */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5em;
 }
 
 
 .grid-item {
     width: 18em;
-    margin-bottom: 16px; /* Adjust the margin between rows of movies */
+    margin-bottom: 16px;
 }
 
 .grid-item img {
@@ -180,28 +196,67 @@ margin-bottom: 0.9em;
     margin-top: 1em;
 }
 
-.container-tab{
-    display: grid;
-    height: 25vh;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 2fr 2fr 2fr 2fr 2fr;
-    justify-content: center;
-    align-items: center;
-    margin-top: 2em;
-}
 
-#titulo-fita {
-    grid-row-start: 1;
-    grid-row-end: 1;
-    grid-column-start: 3;
-    grid-column-end: 3;
-    text-align: center;
-}
 
 
 
 @media only screen and (max-width: 750px) {
 
+    .container-top{
+        display: grid;
+        height: 18vh;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: 2fr 2fr 2fr 2fr 2fr;
+        justify-content: left;
+        align-items: left;
+        margin-top:0em;
+    }
+    
+    #titulo-fita {
+        grid-row-start: 1;
+        grid-row-end: 1;
+        grid-column-start: 1;
+        grid-column-end: 1;
+        text-align: left;
+        margin-top: 2em;
+    }
+
+    .title {
+        text-align: left;
+        margin-left: 1.1em;
+    }
+    
+    #links-container {
+        grid-row-start: 1;
+        grid-row-end: 1;
+        grid-column-start: 2;
+        grid-column-end: 6;
+        margin-top: 2.6em;
+        text-align: center;
+    }
+    
+    #links-container a {
+        text-decoration: none;
+        color: black;
+        padding: 10px 2em; 
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+    }
+    
+    #links{
+       margin-left: 3em;
+       text-align: right;
+       margin-right: 0.5em;
+    }
+
+    hr:first-child {
+        display: none;
+    }
+    
+    hr:nth-child(3) {
+    display: none;
+    }
 
     #linha-mobile{
         display: block;
@@ -215,65 +270,7 @@ margin-bottom: 0.9em;
         grid-column-end: 6;
         margin-top: 0em;
     }
-    .title {
-        text-align: left;
-        margin-left: 1.1em;
-    }
-    
-    #titulo-fita {
-        grid-row-start: 1;
-        grid-row-end: 1;
-        grid-column-start: 1;
-        grid-column-end: 1;
-        text-align: left;
-        margin-top: 2em;
-    }
-    
-    
-    hr:first-child {
-        display: none; /* Hide the first hr in mobile view */
-    }
-    
-    hr:nth-child(3) {
-    display: none;
-    }
-    
-    .container-tab{
-        display: grid;
-        height: 18vh;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-        grid-template-rows: 2fr 2fr 2fr 2fr 2fr;
-        justify-content: left;
-        align-items: left;
-        margin-top:0em;
-    }
-    
-    
-    
-    #button-container {
-        grid-row-start: 1;
-        grid-row-end: 1;
-        grid-column-start: 2;
-        grid-column-end: 6;
-        margin-top: 2.6em;
-        text-align: center;
-    }
-    
-    #button-container a {
-        text-decoration: none;
-        color: black;
-        padding: 10px 2em; 
-        border: none;
-        background-color: transparent;
-        cursor: pointer;
-    }
-    
-    #teste{
-       margin-left: 3em;
-       text-align: right;
-       margin-right: 0.5em;
-    }
-    
+
     #meuCarrossel {
         margin-right: 2.7em;
         margin-left: 2.7em;
@@ -323,14 +320,14 @@ margin-bottom: 0.9em;
     
     .grid-container {
         display: grid;
-        gap: 0.5em; /* Further reduced the gap between movies */
-        grid-template-columns: repeat(2, 1fr); /* Display 2 movies per row in mobile view */
-        margin-left: 3em; /* Adjusted the margin */
+        gap: 0.5em;
+        grid-template-columns: repeat(2, 1fr);
+        margin-left: 3em;
     }
     
     .grid-item {
-        width: calc(85% - 1em); /* Adjusted the width of the movie items */
-        margin-bottom: 0.1em; /* Further reduced the margin between rows of movies */
+        width: calc(85% - 1em);
+        margin-bottom: 0.1em;
     }
     
     .grid-item img {
