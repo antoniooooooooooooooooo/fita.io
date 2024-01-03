@@ -30,43 +30,54 @@
     </div>
 
     <div id="meuCarrossel" class="carousel slide" data-ride="carousel">
-        
         <div class="carousel-inner" id="carouselInner">
-            
             <div class="carousel-display active" id="carousel-display">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5 class="movie-name"></h5>
+                </div>
             </div>
-            
-       
+
             <div class="carousel-display" id="carousel-display">
-   
+                <a class="custom-carousel-control-prev-main" href="#meuCarrossel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Anterior</span>
+                </a>
+
+                <a class="custom-carousel-control-next-main" href="#meuCarrossel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Próximo</span>
+                </a>
             </div>
         </div>
-       
-        <a class="carousel-control-prev" href="#meuCarrossel" role="button" data-slide="prev">
-            
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Anterior</span>
-        </a>
+    </div>
 
-        <a class="carousel-control-next" href="#meuCarrossel" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Próximo</span>
-        </a>
+
 
     </div>
 
+    <h2 id="section-title">Para esta Semana</h2>
+    <div class="swiper-container filme-carousel" id="filmesSemanaCarousel">
+        <div class="swiper-wrapper" id="swiper-wrapper"></div>
+        <!-- Setas de navegação -->
+        <a class="carousel-control-prev custom-carousel-control-prev-filmesSemana" href="#filmesSemanaCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Anterior (Filmes da Semana)</span>
+        </a>
+        <a class="carousel-control-next custom-carousel-control-next-filmesSemana" href="#filmesSemanaCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Próximo (Filmes da Semana)</span>
+        </a>
+    </div>
     
-        <p id="section-title">Para esta semana</p>
-        <div class="center-container">
-        <div class="grid-container"></div>
-        </div>
-        
-   
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="./js/index-movie-grid.js"></script>
-    <script src="./js/index-movie-carousel.js"></script>
+    <script src="./js/individual-movie-info.js"></script>
+    <script src="./js/index-movies-carousel.js"></script>
+    <script src="./js/index-weekly-carousel.js"></script>
+    <script src="./js/index-weekly-swiper.js"></script>
+    
+
 </body>
 
 </html>

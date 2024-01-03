@@ -7,7 +7,7 @@
     --color-grey: #ADADAD;
 
     /*-------- Font Sizes  ----------*/
-    
+
     --font-size-xxs: 14px;
     --font-size-xs: 16px;
     --font-size-s: 24px;
@@ -15,9 +15,9 @@
     --font-size-l: 36px;
 
     /*-------- Font Weight ----------*/
-    
-    --font-thin:100;
-    --font-extra-light:200;
+
+    --font-thin: 100;
+    --font-extra-light: 200;
     --font-light: 300;
     --font-regular: 400;
     --font-medium: 500;
@@ -32,7 +32,7 @@ body {
     overflow-x: hidden;
 }
 
-.container-top{
+.container-top {
     display: grid;
     height: 25vh;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -89,19 +89,19 @@ body {
 #links-container a {
     text-decoration: none;
     color: black;
-    padding: 0px 19%; 
+    padding: 0px 19%;
     margin: 20px 10px;
     border: none;
     background-color: transparent;
     cursor: pointer;
 }
 
-#links{
-margin-top: 0.9em;
-margin-bottom: 0.9em;
+#links {
+    margin-top: 0.9em;
+    margin-bottom: 0.9em;
 }
 
-#linha-mobile{
+#linha-mobile {
     display: none;
 }
 
@@ -117,45 +117,24 @@ hr {
     margin-right: 2.7em;
     margin-left: 2.7em;
     margin-top: -2em;
-    background-image: linear-gradient(rgba(0, 255, 225, 0), rgba(20, 20, 20, 0.841));
 }
 
-.carousel-caption{
-    background-image: linear-gradient(rgba(0, 255, 225, 0), rgba(20, 20, 20, 0.841));
+#meuCarrossel .carousel-inner {
+    width: 100%;
+    /* Define a largura total do carousel */
+    max-height: 500px;
+    /* Define a altura máxima do carousel (ajuste conforme necessário) */
+    overflow: hidden;
+    /* Para garantir que as imagens não ultrapassem o tamanho especificado */
 }
 
-
-.carousel-item{
-    max-height: 30em; 
-    background-image: linear-gradient(rgba(0, 255, 225, 0), rgba(20, 20, 20, 0.841));
+#meuCarrossel .carousel-inner img {
+    width: 100%;
+    /* Assegura que as imagens ocupem 100% da largura do carousel */
+    height: auto;
+    /* Mantém a proporção original da imagem */
 }
 
-.carousel-display {
-    
-    background-image: linear-gradient(rgba(0, 255, 225, 0), rgba(20, 20, 20, 0.841));
-}
-
-#carouselInner{
-    background-image: linear-gradient(rgba(0, 255, 225, 0), rgba(20, 20, 20, 0.841));
-}
-
-.carouselItem{
-    background-image: linear-gradient(rgba(0, 255, 225, 0), rgba(20, 20, 20, 0.841));
-}
-
-.movie-name{
-    margin-bottom: 10em;
-    z-index: 1000;
-}
-
-.film-section {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    height: 100vh;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 2fr 2fr 2fr 2fr 2fr;
-}
 
 .center-container {
     display: flex;
@@ -183,8 +162,6 @@ hr {
     height: 25em;
 }
 
-
-
 #section-title {
     font-size: 1.5em;
     font-weight: var(--font-semi-bold);
@@ -196,22 +173,18 @@ hr {
     margin-top: 1em;
 }
 
-
-
-
-
 @media only screen and (max-width: 750px) {
 
-    .container-top{
+    .container-top {
         display: grid;
         height: 18vh;
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
         grid-template-rows: 2fr 2fr 2fr 2fr 2fr;
         justify-content: left;
         align-items: left;
-        margin-top:0em;
+        margin-top: 0em;
     }
-    
+
     #titulo-fita {
         grid-row-start: 1;
         grid-row-end: 1;
@@ -225,7 +198,7 @@ hr {
         text-align: left;
         margin-left: 1.1em;
     }
-    
+
     #links-container {
         grid-row-start: 1;
         grid-row-end: 1;
@@ -234,31 +207,31 @@ hr {
         margin-top: 2.6em;
         text-align: center;
     }
-    
+
     #links-container a {
         text-decoration: none;
         color: black;
-        padding: 10px 2em; 
+        padding: 10px 2em;
         border: none;
         background-color: transparent;
         cursor: pointer;
     }
-    
-    #links{
-       margin-left: 3em;
-       text-align: right;
-       margin-right: 0.5em;
+
+    #links {
+        margin-left: 3em;
+        text-align: right;
+        margin-right: 0.5em;
     }
 
     hr:first-child {
         display: none;
     }
-    
+
     hr:nth-child(3) {
-    display: none;
+        display: none;
     }
 
-    #linha-mobile{
+    #linha-mobile {
         display: block;
         width: calc(100% - 6em);
         border-top: 1px solid var(--color-black);
@@ -276,22 +249,23 @@ hr {
         margin-left: 2.7em;
         margin-top: 0em;
     }
+
     .carousel-container {
         width: calc(100% - 6em);
         text-align: center;
         margin: 20px 0;
         color: var(--color-white);
     }
-    
+
     .carousel-caption {
         text-align: left;
     }
-    
-    .carousel-item{
-        max-height: 13em; 
+
+    .carousel-item {
+        max-height: 13em;
     }
-    
-    .container-info{
+
+    .container-info {
         display: grid;
         height: 140vh;
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -317,23 +291,140 @@ hr {
         grid-template-columns: 1fr;
         grid-template-rows: 2fr 2fr 2fr 2fr 2fr;
     }
-    
+
     .grid-container {
         display: grid;
         gap: 0.5em;
         grid-template-columns: repeat(2, 1fr);
         margin-left: 3em;
     }
-    
+
     .grid-item {
         width: calc(85% - 1em);
         margin-bottom: 0.1em;
     }
-    
+
     .grid-item img {
         width: 100%;
         height: auto;
     }
-    
+
 
 }
+
+.custom-carousel-control-prev-main,
+.custom-carousel-control-next-main,
+.custom-carousel-control-prev-filmesSemana,
+.custom-carousel-control-next-filmesSemana {
+    position: absolute;
+    top: 50%;
+    font-size: 2rem;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    z-index: 2;
+}
+
+.custom-carousel-control-prev-main:hover,
+.custom-carousel-control-next-main:hover,
+.custom-carousel-control-prev-filmesSemana:hover,
+.custom-carousel-control-next-filmesSemana:hover {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.custom-carousel-control-prev-main {
+    left: 10px;
+}
+
+.custom-carousel-control-next-main {
+    right: 10px;
+}
+
+.custom-carousel-control-prev-filmesSemana {
+    left: 50px;
+}
+
+.custom-carousel-control-next-filmesSemana {
+    right: 50px;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nome-filme {
+    color: white;
+    font-size: 24px;
+    text-align: center;
+}
+
+.swiper-container {
+    max-width: 1920px;
+    padding: 0 40px;
+    margin: auto;
+}
+
+.section-title {
+    margin-bottom: 30px;
+    padding-left: 20px;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    font-weight: 700;
+    border-left: 4px solid black;
+    display: flex;
+    align-items: center;
+}
+
+.filme-carousel {
+    position: relative;
+}
+
+.swiper-slide {
+    overflow: hidden;
+    
+}
+
+.swiper-slide img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+    transform-origin: center bottom;
+}
+
+.swiper-slide:hover img {
+    transform: scale(1.2);
+}
+
+.info-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    color: white;
+    left: 100px;
+    padding: 8px;
+}
+
+.movie-name,
+.movie-duration {
+    margin: 0;
+    color: white;
+}
+.carousel-item {
+    position: relative;
+    height: 100%; /* Ocupa 100% da altura do contêiner pai */
+  }
