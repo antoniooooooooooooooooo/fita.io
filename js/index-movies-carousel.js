@@ -15,7 +15,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     const movieCover = document.createElement('img');
                     movieCover.src = movie.metadata.photo.url || '';
                     movieCover.alt = `Capa do Filme ${movie.title}`;
-                    movieCover.className = 'd-block w-100';
+                    movieCover.className = 'd-block w-100 weekly-carousel-image';
+                    movieCover.style.height = '500px'; // Defina a altura desejada aqui
 
                     movieLink.appendChild(movieCover);
                     swiperSlide.appendChild(movieLink);
@@ -25,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
             const swiper = new Swiper('#filmesSemanaCarousel', {
-                slidesPerView: 3,
+                slidesPerView: 4,
                 spaceBetween: 15,
                 navigation: {
                     nextEl: '.custom-carousel-control-next-filmesSemana',
