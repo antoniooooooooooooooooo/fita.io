@@ -132,7 +132,8 @@ hr {
     width: 100%;
     /* Assegura que as imagens ocupem 100% da largura do carousel */
     height: 500px;
-    object-fit: cover; /* Para manter a proporção da imagem */
+    object-fit: cover;
+    /* Para manter a proporção da imagem */
 }
 
 .center-container {
@@ -373,7 +374,7 @@ hr {
 }
 
 .swiper-container {
-    max-width: 1920px;
+    max-width: 100%;
     padding: 0 40px;
     margin: auto;
 }
@@ -395,12 +396,10 @@ hr {
 
 .swiper-slide {
     overflow: hidden;
-    
+
 }
 
 .swiper-slide img {
-    width: 100%;
-    height: auto;
     transition: transform 0.3s linear;
     transform-origin: center bottom;
 }
@@ -426,9 +425,10 @@ hr {
 .carousel-item {
     position: relative;
     height: 100%;
-    
- }
- .section-header{
+
+}
+
+.section-header {
     margin-bottom: 30px;
     padding-left: 20px;
     text-transform: uppercase;
@@ -438,15 +438,18 @@ hr {
     display: flex;
     align-items: center;
 }
-.movie-details-descricao{
+
+.movie-details-descricao {
     font-size: 1.15rem;
     margin-top: var(--space-top);
     line-height: 1.5rem;
     width: 100%;
 }
+
 .item-content-wraper {
     padding-left: 5rem;
-    width: 50%; /* Ajuste conforme necessário */
+    width: 50%;
+    /* Ajuste conforme necessário */
     background-color: rgba(0, 0, 0, 0.9);
     display: flex;
     flex-direction: column;
@@ -454,3 +457,12 @@ hr {
     position: relative;
 }
 
+.weekly-carousel-image {
+    max-width: 100%;
+    /* Reduz o tamanho máximo para 100% da largura do contêiner pai */
+    height: auto;
+    /* Mantém a proporção da imagem */
+    object-fit: cover;
+    /* Para manter a proporção da imagem */
+    margin-bottom: 20px;
+}
