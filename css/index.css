@@ -449,8 +449,7 @@ hr {
 .item-content-wraper {
     padding-left: 5rem;
     width: 50%;
-    /* Ajuste conforme necessário */
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: (0, 0, 0, 0.9);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -459,10 +458,77 @@ hr {
 
 .weekly-carousel-image {
     max-width: 100%;
-    /* Reduz o tamanho máximo para 100% da largura do contêiner pai */
     height: auto;
-    /* Mantém a proporção da imagem */
     object-fit: cover;
-    /* Para manter a proporção da imagem */
     margin-bottom: 20px;
 }
+@media only screen and (min-width: 1920px) {
+    .movie-name {
+        font-size: 2rem;
+    }
+
+    .movie-duration {
+        font-size: 1.5rem;
+    }
+
+    .movie-details-descricao p {
+        font-size: 1.2rem;
+    }
+}
+
+@media only screen and (min-width: 1280px) and (max-width: 1919px) {
+    .movie-name {
+        font-size: 1.8rem;
+    }
+
+    .movie-duration {
+        font-size: 1.3rem;
+    }
+
+    .movie-details-descricao p {
+        font-size: 1rem;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1279px) {
+    .movie-name {
+        font-size: 1.5rem;
+    }
+
+    .movie-duration {
+        font-size: 1.2rem;
+    }
+
+    .movie-details-descricao p {
+        font-size: 0.9rem;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .movie-name {
+        font-size: 1.1rem;
+    }
+
+    .movie-duration {
+        font-size: 1rem;
+    }
+
+    .movie-details-descricao p {
+        display: none; 
+    }
+
+  .swiper-container  {
+        position: relative;
+        width: 80%;
+        height: 300px;
+        z-index: 1;
+        display: flex;
+        transition-property: transform;
+        transition-timing-function: var(--swiper-wrapper-transition-timing-function,initial);
+        box-sizing: content-box;
+        object-fit:cover;
+    }
+}
+
+
+

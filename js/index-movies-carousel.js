@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     movieCover.src = movie.metadata.photo.url || '';
                     movieCover.alt = `Capa do Filme ${movie.title}`;
                     movieCover.className = 'd-block w-100 weekly-carousel-image';
-                    movieCover.style.height = '500px'; // Defina a altura desejada aqui
+                    movieCover.style.height = '500px'; 
 
 
                     movieLink.appendChild(movieCover);
@@ -32,6 +32,23 @@ document.addEventListener("DOMContentLoaded", function () {
                 navigation: {
                     nextEl: '.custom-carousel-control-next-filmesSemana',
                     prevEl: '.custom-carousel-control-prev-filmesSemana',
+                },
+                breakpoints: {
+                   // Quando a altura da tela é maior ou igual a 1200 pixels
+                   1200: {
+                    slidesPerView: 4,
+                    slidesPerGroup: 4,
+                },
+                // Quando a altura da tela é menor que 1200 pixels
+                768: {
+                    slidesPerView: 2,
+                    slidesPerGroup: 2,
+                },
+                // Quando a altura da tela é menor que 768 pixels
+                320: {
+                    slidesPerView: 2,
+                    slidesPerGroup: 2,
+                },
                 },
             });
         })
