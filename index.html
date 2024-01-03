@@ -33,7 +33,7 @@
         <div class="carousel-inner" id="carouselInner">
             <div class="carousel-display active" id="carousel-display">
                 <div class="carousel-caption d-none d-md-block">
-                    <h5 class="movie-name"></h5>
+                    <h1 class="movie-name"></h1>
                 </div>
             </div>
 
@@ -47,15 +47,24 @@
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="sr-only">Próximo</span>
                 </a>
+                <ol class="carousel-indicators">
+                    <li data-target="#meuCarrossel" data-slide-to="0" class="active"></li>
+                    <li data-target="#meuCarrossel" data-slide-to="1"></li>
+                    <li data-target="#meuCarrossel" data-slide-to="2"></li>
+                    <li data-target="#meuCarrossel" data-slide-to="3"></li>
+                    <li data-target="#meuCarrossel" data-slide-to="4"></li>
+                    <li data-target="#meuCarrossel" data-slide-to=""></li>
+                    <!-- Adicione mais indicadores conforme necessário -->
+                </ol>
             </div>
         </div>
     </div>
-
+    
 
 
     </div>
 
-    <h2 id="section-title">Para esta Semana</h2>
+    <h2 id="section-title" class="section-header">Para esta Semana</h2>
     <div class="swiper-container filme-carousel" id="filmesSemanaCarousel">
         <div class="swiper-wrapper" id="swiper-wrapper"></div>
         <!-- Setas de navegação -->

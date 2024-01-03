@@ -38,16 +38,22 @@ document.addEventListener("DOMContentLoaded", function () {
                     infoContainer.className = 'info-container position-absolute bottom-0 start-0 mb-3 ms-3'; // Ajustei o valor de mb-3
 
                     // Create an element for the movie name
-                    const movieName = document.createElement('h5');
+                    const movieName = document.createElement('h1');
                     movieName.textContent = movie.title;
 
                     // Create an element for the movie duration
                     const movieDuration = document.createElement('p');
-                    movieDuration.textContent = `Duração: ${movie.metadata.duracao || 'N/A'}`;
+                    movieDuration.textContent = ` ${movie.metadata.duracao || 'N/A'}`;
+
+                    const descricaoContainer = document.createElement('div');
+                    descricaoContainer.className = 'movie-details-descricao';
+                    descricaoContainer.innerHTML = `<p>${movie.metadata.descricao || 'Descrição não disponível'}</p>`;
+                    descricaoContainer.style.width = '50%'; // Ajuste conforme necessário
 
                     // Append the elements to the info container
                     infoContainer.appendChild(movieName);
                     infoContainer.appendChild(movieDuration);
+                    infoContainer.appendChild(descricaoContainer);
 
                     // Append the link to the carousel item
                     movieLink.appendChild(movieImage);

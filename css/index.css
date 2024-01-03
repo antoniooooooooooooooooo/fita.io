@@ -131,10 +131,9 @@ hr {
 #meuCarrossel .carousel-inner img {
     width: 100%;
     /* Assegura que as imagens ocupem 100% da largura do carousel */
-    height: auto;
-    /* Mantém a proporção original da imagem */
+    height: 500px;
+    object-fit: cover; /* Para manter a proporção da imagem */
 }
-
 
 .center-container {
     display: flex;
@@ -320,7 +319,7 @@ hr {
     top: 50%;
     font-size: 2rem;
     color: white;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.7);
     border: none;
     border-radius: 50%;
     width: 40px;
@@ -340,19 +339,19 @@ hr {
 }
 
 .custom-carousel-control-prev-main {
-    left: 10px;
+    left: 5px;
 }
 
 .custom-carousel-control-next-main {
-    right: 10px;
+    right: 5px;
 }
 
 .custom-carousel-control-prev-filmesSemana {
-    left: 50px;
+    left: 45px;
 }
 
 .custom-carousel-control-next-filmesSemana {
-    right: 50px;
+    right: 45px;
 }
 
 .overlay {
@@ -361,7 +360,7 @@ hr {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.7);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -402,18 +401,17 @@ hr {
 .swiper-slide img {
     width: 100%;
     height: auto;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s linear;
     transform-origin: center bottom;
 }
 
 .swiper-slide:hover img {
-    transform: scale(1.2);
+    transform: scale(1.1);
 }
 
 .info-container {
     display: flex;
     flex-direction: column;
-    position: absolute;
     color: white;
     left: 100px;
     padding: 8px;
@@ -424,7 +422,35 @@ hr {
     margin: 0;
     color: white;
 }
+
 .carousel-item {
     position: relative;
-    height: 100%; /* Ocupa 100% da altura do contêiner pai */
-  }
+    height: 100%;
+    
+ }
+ .section-header{
+    margin-bottom: 30px;
+    padding-left: 20px;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    font-weight: 700;
+    border-left: 4px solid black;
+    display: flex;
+    align-items: center;
+}
+.movie-details-descricao{
+    font-size: 1.15rem;
+    margin-top: var(--space-top);
+    line-height: 1.5rem;
+    width: 100%;
+}
+.item-content-wraper {
+    padding-left: 5rem;
+    width: 50%; /* Ajuste conforme necessário */
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
