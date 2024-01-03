@@ -37,7 +37,7 @@
                         break;
 
                     case 'genres':
-                        const genres = ['Ação', 'Comédia', 'Documentário', 'Drama', 'Musical'];
+                        const genres = ['Ação', 'Comédia', 'Documentário', 'Drama', 'Musical', 'Aventura', 'Terror', 'Biografia', 'Animação'];
                         genres.forEach(genre => {
                             const genreOption = createOptionElement(genre, showMoviesByGenre);
                             optionsContainer.appendChild(genreOption);
