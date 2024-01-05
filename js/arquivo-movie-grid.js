@@ -21,7 +21,7 @@ function showOptions(optionType) {
         // Add the options based on the selected type
         switch (optionType) {
             case 'years':
-                const years = ['1920s', '1930s', '1940s', '1950s', '1960s', '1970s', '1980s', '1990s', '2000s', '2010s', '2020s'];
+                const years = ['1950s', '1960s', '1970s', '1980s', '1990s', '2000s', '2010s', '2020s'];
                 years.forEach(year => {
                     const yearOption = createOptionElement(year, showMoviesByYearRange);
                     optionsContainer.appendChild(yearOption);
@@ -49,16 +49,25 @@ function showOptions(optionType) {
                     optionsContainer.appendChild(colorOptionsContainer);
                 
                 break;
-            case 'genres':
-                const genres = ['Ação', 'Comédia', 'Documentário', 'Drama', 'Musical', 'Aventura', 'Terror', 'Biografia', 'Animação'];
-                genres.forEach(genre => {
-                    const genreOption = createOptionElement(genre, showMoviesByGenre);
-                    optionsContainer.appendChild(genreOption);
-                });
-                break;
-
-            default:
-                break;
+                case 'genres':
+                    const genres = ['Ação', 'Comédia', 'Documentário', 'Drama', 'Musical', 'Aventura', 'Terror', 'Biografia', 'Animação', 'Romance', 'Sci-fi', 'Mistério'];
+                    
+                    // Create a flex container for genres
+                    const genresOptionsContainer = document.createElement('div');
+                    genresOptionsContainer.style.display = 'flex';
+                   // Allow genres to wrap to the next line if needed
+    
+                    genres.forEach(genre => {
+                        const genreOption = createOptionElement(genre, showMoviesByGenre);
+                        genresOptionsContainer.appendChild(genreOption);
+                    });
+    
+                    // Append the genres container to the main options container
+                    optionsContainer.appendChild(genresOptionsContainer);
+                    break;
+    
+                default:
+                    break;
         }
     } else {
         // Hide the options container
@@ -75,7 +84,7 @@ function showMoviesByYearRange(yearRange) {
     const endYear = startYear + 9;
 
     // Fetch data from the API based on the selected year range
-    const apiUrl = `https://api.cosmicjs.com/v3/buckets/fita-production/objects?pretty=true&query=%7B%22type%22:%22movies%22,%22metadata.ano%22:%7B%22$gte%22:${startYear},%22$lte%22:${endYear}%7D%7D&limit=10&read_key=nMpklsOUy4PFd7cy1DtpXwvKDAst2IXyCGC4I4x2cDynYnbkUF&depth=1&props=slug,title,metadata,id,`;
+    const apiUrl = `https://api.cosmicjs.com/v3/buckets/fita-production/objects?pretty=true&query=%7B%22type%22:%22movies%22,%22metadata.ano%22:%7B%22$gte%22:${startYear},%22$lte%22:${endYear}%7D%7D&limit=200&read_key=nMpklsOUy4PFd7cy1DtpXwvKDAst2IXyCGC4I4x2cDynYnbkUF&depth=1&props=slug,title,metadata,id,`;
 
     fetchMovies(apiUrl);
 }
@@ -83,7 +92,7 @@ function showMoviesByYearRange(yearRange) {
 // Function to show genre options
 function showMoviesByGenre(genre) {
     // Fetch data from the API based on the selected genre
-    const apiUrl = `https://api.cosmicjs.com/v3/buckets/fita-production/objects?pretty=true&query=%7B%22type%22:%22movies%22,%22metadata.genero%22:%22${genre}%22%7D&limit=10&read_key=nMpklsOUy4PFd7cy1DtpXwvKDAst2IXyCGC4I4x2cDynYnbkUF&depth=1&props=slug,title,metadata,id,`;
+    const apiUrl = `https://api.cosmicjs.com/v3/buckets/fita-production/objects?pretty=true&query=%7B%22type%22:%22movies%22,%22metadata.genero%22:%22${genre}%22%7D&limit=200&read_key=nMpklsOUy4PFd7cy1DtpXwvKDAst2IXyCGC4I4x2cDynYnbkUF&depth=1&props=slug,title,metadata,id,`;
 
     fetchMovies(apiUrl);
 }
@@ -93,7 +102,7 @@ function showMoviesByColor(color) {
     // Fetch data from the API based on the selected color
     const apiUrl = color === 'all'
         ? 'https://api.cosmicjs.com/v3/buckets/fita-production/objects?pretty=true&query=%7B%22type%22:%22movies%22%7D&limit=10&read_key=nMpklsOUy4PFd7cy1DtpXwvKDAst2IXyCGC4I4x2cDynYnbkUF&depth=1&props=slug,title,metadata,id,'
-        : `https://api.cosmicjs.com/v3/buckets/fita-production/objects?pretty=true&query=%7B%22type%22:%22movies%22,%22metadata.cor.key%22:%22${color}%22%7D&limit=10&read_key=nMpklsOUy4PFd7cy1DtpXwvKDAst2IXyCGC4I4x2cDynYnbkUF&depth=1&props=slug,title,metadata,id,`;
+        : `https://api.cosmicjs.com/v3/buckets/fita-production/objects?pretty=true&query=%7B%22type%22:%22movies%22,%22metadata.cor.key%22:%22${color}%22%7D&limit=200&read_key=nMpklsOUy4PFd7cy1DtpXwvKDAst2IXyCGC4I4x2cDynYnbkUF&depth=1&props=slug,title,metadata,id,`;
 
     // Pass the selected color to showFilmes
     showFilmes('color', color);
@@ -104,7 +113,7 @@ function createOptionElement(value, clickHandler) {
     const optionElement = document.createElement('span');
     optionElement.className = 'option';
     optionElement.textContent = value;
-
+    optionElement.innerHTML = value.replace('-', '&#8209;');
     // Add event listener to call the specified click handler with the corresponding value
     optionElement.addEventListener('click', () => clickHandler(value));
 
@@ -117,7 +126,7 @@ function showMoviesBySearch() {
     const searchTerm = document.getElementById('search-input').value;
 
     // Fetch data from the API based on the entered search term
-    const apiUrl = `https://api.cosmicjs.com/v3/buckets/fita-production/objects?pretty=true&query=%7B%22type%22:%22movies%22,%22title%22:%7B%22$regex%22:%22${searchTerm}%22,%22$options%22:%22i%22%7D%7D&limit=10&read_key=nMpklsOUy4PFd7cy1DtpXwvKDAst2IXyCGC4I4x2cDynYnbkUF&depth=1&props=slug,title,metadata,id,`;
+    const apiUrl = `https://api.cosmicjs.com/v3/buckets/fita-production/objects?pretty=true&query=%7B%22type%22:%22movies%22,%22title%22:%7B%22$regex%22:%22${searchTerm}%22,%22$options%22:%22i%22%7D%7D&limit=200&read_key=nMpklsOUy4PFd7cy1DtpXwvKDAst2IXyCGC4I4x2cDynYnbkUF&depth=1&props=slug,title,metadata,id,`;
 
     fetchMovies(apiUrl);
 }
