@@ -108,7 +108,7 @@ function showMoviesByGenre(genre) {
         : `https://api.cosmicjs.com/v3/buckets/fita-production/objects?pretty=true&query=%7B%22type%22:%22movies%22,%22metadata.genero%22:%22${genre}%22,%22metadata.cor.key%22:%22${selectedColor}%22%7D&limit=200&read_key=nMpklsOUy4PFd7cy1DtpXwvKDAst2IXyCGC4I4x2cDynYnbkUF&depth=1&props=slug,title,metadata,id,`;
 
     // Call fetchMovies with both color and sorting options
-    fetchMovies(apiUrl, selectedSorting, selectedGenre);
+    fetchMovies(apiUrl, selectedSorting, selectedColor);
 }
 
 
