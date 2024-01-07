@@ -230,6 +230,15 @@ hr {
     font-weight: 400;
 }
 
+#sorting-select{
+    background-color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    color: #000000;
+    border:rgb(255, 255, 255);
+    outline: none;
+    cursor: pointer;
+}
+
 .special {
     background-color: #ffffff;
     color: rgb(0, 0, 0);
@@ -238,7 +247,7 @@ hr {
     font-family: 'Montserrat', sans-serif;
     font-size: 16px;
     font-weight: 400;
-    margin-right: 15em;
+    margin-right: 12em;
 }
 
 #links-container2 button {
@@ -374,13 +383,24 @@ hr {
         border: none;
         cursor: pointer;
         font-family: 'Montserrat', sans-serif;
-        font-size: 15px;
+        font-size: 13px;
         font-weight: 400;
-        margin-right: 0.2em;
+        margin-right: 0.1em;
     }
 
-    #button-container2 button {
-        margin-left: 2em;
+    #sorting-select{
+        background-color: #ffffff;
+        font-family: 'Montserrat', sans-serif;
+        color: #000000;
+        border:rgb(255, 255, 255);
+        outline: none;
+        cursor: pointer;
+        max-width: 5.9em;
+        margin-left: 0.6em;
+    }
+
+    #links-container2 button {
+        margin-left: 1em;
     }
 
 

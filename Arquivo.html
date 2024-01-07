@@ -31,6 +31,11 @@
                 <button class="special" onclick="showOptions('years')">Décadas</button>
                 <button class="special" onclick="showOptions('colors')">Cor</button>
                 <button class="special" onclick="showOptions('genres')">Género</button>
+                <select class="special" id="sorting-select" onchange="handleSortingChange()">
+                    <option disabled selected value="">Ordenar por</option>
+                <option value="year">Ano</option>
+                <option value="title">Alfabeticamente</option>
+              </select>
             </div>
             <hr>
         </div>

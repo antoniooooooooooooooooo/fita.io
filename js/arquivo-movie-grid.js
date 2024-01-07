@@ -3,7 +3,7 @@ function showFilmes(filmes, color) {
     // Fetch data from the API
     const apiUrl = filmes === 'all'
         ? 'https://api.cosmicjs.com/v3/buckets/fita-production/objects?pretty=true&query=%7B%22type%22:%22movies%22%7D&limit=200&read_key=nMpklsOUy4PFd7cy1DtpXwvKDAst2IXyCGC4I4x2cDynYnbkUF&depth=1&props=slug,title,metadata,id,'
-        : 'https://api.cosmicjs.com/v3/buckets/fita-production/objects?pretty=true&query=%7B%22type%22:%22movies%22,%22metadata.cor%22:%22' + color + '%22%7D&limit=10&read_key=nMpklsOUy4PFd7cy1DtpXwvKDAst2IXyCGC4I4x2cDynYnbkUF&depth=1&props=slug,title,metadata,id,';
+        : 'https://api.cosmicjs.com/v3/buckets/fita-production/objects?pretty=true&query=%7B%22type%22:%22movies%22,%22metadata.cor%22:%22' + color + '%22%7D&limit=200&read_key=nMpklsOUy4PFd7cy1DtpXwvKDAst2IXyCGC4I4x2cDynYnbkUF&depth=1&props=slug,title,metadata,id,';
 
     fetchMovies(apiUrl);
 }
@@ -101,7 +101,7 @@ function showMoviesByGenre(genre) {
 function showMoviesByColor(color) {
     // Fetch data from the API based on the selected color
     const apiUrl = color === 'all'
-        ? 'https://api.cosmicjs.com/v3/buckets/fita-production/objects?pretty=true&query=%7B%22type%22:%22movies%22%7D&limit=10&read_key=nMpklsOUy4PFd7cy1DtpXwvKDAst2IXyCGC4I4x2cDynYnbkUF&depth=1&props=slug,title,metadata,id,'
+        ? 'https://api.cosmicjs.com/v3/buckets/fita-production/objects?pretty=true&query=%7B%22type%22:%22movies%22%7D&limit=200&read_key=nMpklsOUy4PFd7cy1DtpXwvKDAst2IXyCGC4I4x2cDynYnbkUF&depth=1&props=slug,title,metadata,id,'
         : `https://api.cosmicjs.com/v3/buckets/fita-production/objects?pretty=true&query=%7B%22type%22:%22movies%22,%22metadata.cor.key%22:%22${color}%22%7D&limit=200&read_key=nMpklsOUy4PFd7cy1DtpXwvKDAst2IXyCGC4I4x2cDynYnbkUF&depth=1&props=slug,title,metadata,id,`;
 
     // Pass the selected color to showFilmes
@@ -137,11 +137,28 @@ document.getElementById('search-input').addEventListener('input', function () {
     showMoviesBySearch();
 });
 
+
+
+
+// Function to fetch movies based on the provided API URL and sorting option
 // Function to fetch movies based on the provided API URL
-function fetchMovies(apiUrl) {
+// Function to fetch movies based on the provided API URL and sorting option
+// Function to fetch movies based on the provided API URL and sorting option
+function fetchMovies(apiUrl, sortingOption) {
     fetch(apiUrl)
         .then(response => response.json())
         .then(data => {
+            // Sort movies based on the selected sorting option
+            let sortedMovies;
+            if (sortingOption === 'year') {
+                sortedMovies = data.objects.sort((a, b) => a.metadata.ano - b.metadata.ano);
+            } else if (sortingOption === 'title') {
+                sortedMovies = data.objects.sort((a, b) => a.title.localeCompare(b.title));
+            } else {
+                // Display movies randomly when no sorting option is selected
+                sortedMovies = data.objects.sort(() => Math.random() - 0.5);
+            }
+
             // Reference to the grid container
             const gridContainer = document.querySelector('.grid-container');
 
@@ -149,7 +166,7 @@ function fetchMovies(apiUrl) {
             gridContainer.innerHTML = '';
 
             // Loop through each movie and create a movie item
-            data.objects.forEach(movie => {
+            sortedMovies.forEach(movie => {
                 // Create a movie item
                 const movieItem = document.createElement('div');
                 movieItem.className = 'movie-item';
@@ -157,7 +174,7 @@ function fetchMovies(apiUrl) {
                 // Create a link to the movie details page
                 const movieLink = document.createElement('a');
                 movieLink.href = `individual.html?slug=${movie.id}`; // Pass the movie slug as a query parameter
-                movieLink.innerHTML = `<img src="${movie.metadata.photo.url}"  alt="${movie.title}">`;
+                movieLink.innerHTML = `<img src="${movie.metadata.photo.url}" alt="${movie.title}">`;
 
                 // Append the link to the movie item
                 movieItem.appendChild(movieLink);
@@ -169,5 +186,26 @@ function fetchMovies(apiUrl) {
         .catch(error => console.error('Error fetching data:', error));
 }
 
-// Fetch data from the API and display all movies initially
+// Function to handle sorting change
+function handleSortingChange() {
+    const sortingSelect = document.getElementById('sorting-select');
+    const selectedSorting = sortingSelect.value;
+
+    // Replace the API URL with the appropriate one for your use case
+    const apiUrl = 'https://api.cosmicjs.com/v3/buckets/fita-production/objects?pretty=true&query=%7B%22type%22:%22movies%22%7D&limit=200&read_key=nMpklsOUy4PFd7cy1DtpXwvKDAst2IXyCGC4I4x2cDynYnbkUF&depth=1&props=slug,title,metadata,id';
+
+    // Call fetchMovies initially with no sorting option
+    fetchMovies(apiUrl);
+
+    // If the sorting option is 'title' or 'year', fetch the movies and apply sorting
+    if (selectedSorting === 'title' || selectedSorting === 'year') {
+        fetchMovies(apiUrl, selectedSorting);
+    }
+}
+
+// Call fetchMovies to initially load movies with random sorting
+fetchMovies('https://api.cosmicjs.com/v3/buckets/fita-production/objects?pretty=true&query=%7B%22type%22:%22movies%22%7D&limit=200&read_key=nMpklsOUy4PFd7cy1DtpXwvKDAst2IXyCGC4I4x2cDynYnbkUF&depth=1&props=slug,title,metadata,id');
+
+
+// Call fetchMovies to initially load movies
 showFilmes('all');
