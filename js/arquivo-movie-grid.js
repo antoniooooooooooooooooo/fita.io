@@ -21,53 +21,54 @@ function showOptions(optionType) {
         // Add the options based on the selected type
         switch (optionType) {
             case 'years':
-                const years = ['1950s', '1960s', '1970s', '1980s', '1990s', '2000s', '2010s', '2020s'];
+                const years = ['Todas', '1950s', '1960s', '1970s', '1980s', '1990s', '2000s', '2010s', '2020s'];
                 years.forEach(year => {
                     const yearOption = createOptionElement(year, showMoviesByYearRange);
                     optionsContainer.appendChild(yearOption);
                 });
                 break;
-                case 'colors':
-                    const colorNames = ['Branco','Cinzento','Preto',  'Castanho', 'Azul', 'Verde', 'Amarelo', 'Laranja', 'Vermelho', 'Rosa', 'Roxo'];
-                    const colorCodes = ['#F1F1F1','#808080','#000000',  '#8C654F', '#00B0FF', '#2ECC71', '#FFBB04', '#FF6322', '#E8322D', '#FF3E8E', '#9F4BF2'];
-    
-                    const colorOptionsContainer = document.createElement('div');
-                    colorOptionsContainer.style.display = 'flex'; 
-                    colorOptionsContainer.style.marginLeft = '-30px'; 
-    
-                    for (let i = 0; i < colorNames.length; i++) {
-                        const colorOption = createOptionElement(colorNames[i], showMoviesByColor);
-                        colorOption.style.backgroundColor = colorCodes[i];
-                        colorOption.style.width = '110px'; 
-                        colorOption.style.height = '40px';
-                        colorOption.style.margin='6px';
-                        colorOption.style.color = 'transparent';
-    
-                        colorOptionsContainer.appendChild(colorOption);
-                    }
-    
-                    optionsContainer.appendChild(colorOptionsContainer);
-                
+            case 'colors':
+                const colorNames = ['Branco', 'Cinzento', 'Preto', 'Castanho', 'Azul', 'Verde', 'Amarelo', 'Laranja', 'Vermelho', 'Rosa', 'Roxo'];
+                const colorCodes = ['#F1F1F1', '#808080', '#000000', '#8C654F', '#00B0FF', '#2ECC71', '#FFBB04', '#FF6322', '#E8322D', '#FF3E8E', '#9F4BF2'];
+
+                const colorOptionsContainer = document.createElement('div');
+                colorOptionsContainer.style.display = 'flex';
+                colorOptionsContainer.style.marginLeft = '-30px';
+
+                for (let i = 0; i < colorNames.length; i++) {
+                    const colorOption = createOptionElement(colorNames[i], showMoviesByColor);
+                    colorOption.style.backgroundColor = colorCodes[i];
+                    colorOption.style.width = '110px';
+                    colorOption.style.height = '40px';
+                    colorOption.style.margin = '6px';
+                    colorOption.style.color = 'transparent';
+
+                    colorOptionsContainer.appendChild(colorOption);
+                }
+
+                optionsContainer.appendChild(colorOptionsContainer);
+
                 break;
-                case 'genres':
-                    const genres = ['Ação', 'Comédia', 'Documentário', 'Drama', 'Musical', 'Aventura', 'Terror', 'Biografia', 'Animação', 'Romance', 'Sci-fi', 'Mistério'];
-                    
-                    // Create a flex container for genres
-                    const genresOptionsContainer = document.createElement('div');
-                    genresOptionsContainer.style.display = 'flex';
-                   // Allow genres to wrap to the next line if needed
-    
-                    genres.forEach(genre => {
-                        const genreOption = createOptionElement(genre, showMoviesByGenre);
-                        genresOptionsContainer.appendChild(genreOption);
-                    });
-    
-                    // Append the genres container to the main options container
-                    optionsContainer.appendChild(genresOptionsContainer);
-                    break;
-    
-                default:
-                    break;
+            case 'genres':
+                const genres = [ 'Ação', 'Comédia', 'Documentário', 'Drama', 'Musical', 'Aventura', 'Terror', 'Biografia', 'Animação', 'Romance', 'Sci-fi', 'Mistério'];
+
+                // Create a flex container for genres
+                const genresOptionsContainer = document.createElement('div');
+                genresOptionsContainer.style.display = 'flex';
+                // Allow genres to wrap to the next line if needed
+
+                genres.forEach(genre => {
+                    const genreOption = createOptionElement(genre, showMoviesByGenre);
+                    genresOptionsContainer.appendChild(genreOption);
+                });
+
+                // Append the "Todos" option to the beginning
+                const allGenresOption = createOptionElement('Todos', showMoviesByGenre);
+                genresOptionsContainer.insertBefore(allGenresOption, genresOptionsContainer.firstChild);
+
+                // Append the genres container to the main options container
+                optionsContainer.appendChild(genresOptionsContainer);
+                break;
         }
     } else {
         // Hide the options container
@@ -78,54 +79,55 @@ function showOptions(optionType) {
     }
 }
 // Function to show movies based on color
-// Function to show movies based on color
-// Function to show movies based on color
+
 let selectedColor = 'all';
 let selectedYearRange = 'all';
 let selectedSorting = '';
 // Function to show movies based on year range
-// Function to show movies based on year range
-// Function to show movies based on year range
 function showMoviesByYearRange(yearRange) {
-    const startYear = parseInt(yearRange);
-    const endYear = startYear + 9;
-
-    // Fetch data from the API based on the selected year range, color, and sorting option
-    const apiUrl = (selectedYearRange === 'all')
-        ? `https://api.cosmicjs.com/v3/buckets/fita-production/objects?pretty=true&query=%7B%22type%22:%22movies%22,%22metadata.ano%22:%7B%22$gte%22:${startYear},%22$lte%22:${endYear}%7D%7D&limit=200&read_key=nMpklsOUy4PFd7cy1DtpXwvKDAst2IXyCGC4I4x2cDynYnbkUF&depth=1&props=slug,title,metadata,id,`
-        : `https://api.cosmicjs.com/v3/buckets/fita-production/objects?pretty=true&query=%7B%22type%22:%22movies%22,%22metadata.ano%22:%7B%22$gte%22:${startYear},%22$lte%22:${endYear}%7D,%22metadata.cor.key%22:%22${selectedColor}%22%7D&limit=200&read_key=nMpklsOUy4PFd7cy1DtpXwvKDAst2IXyCGC4I4x2cDynYnbkUF&depth=1&props=slug,title,metadata,id,`;
-
-    // Call fetchMovies with both color and sorting options
-    fetchMovies(apiUrl, selectedSorting, selectedYearRange);
+    // Verifique se a opção selecionada é "Todas"
+    if (yearRange === 'Todas') {
+        // Lógica para mostrar todos os filmes, sem restrição de década
+        const apiUrl = 'https://api.cosmicjs.com/v3/buckets/fita-production/objects?pretty=true&query=%7B%22type%22:%22movies%22%7D&limit=200&read_key=nMpklsOUy4PFd7cy1DtpXwvKDAst2IXyCGC4I4x2cDynYnbkUF&depth=1&props=slug,title,metadata,id,';
+        fetchMovies(apiUrl, selectedSorting, selectedColor);
+    } else {
+        // Lógica para mostrar filmes da década específica
+        const startYear = parseInt(yearRange);
+        const endYear = startYear + 9;
+        const apiUrl = `https://api.cosmicjs.com/v3/buckets/fita-production/objects?pretty=true&query=%7B%22type%22:%22movies%22,%22metadata.ano%22:%7B%22$gte%22:${startYear},%22$lte%22:${endYear}%7D%7D&limit=200&read_key=nMpklsOUy4PFd7cy1DtpXwvKDAst2IXyCGC4I4x2cDynYnbkUF&depth=1&props=slug,title,metadata,id,`;
+        fetchMovies(apiUrl, selectedSorting, selectedColor);
+    }
 }
 
-// Function to show movies based on genre
 // Function to show movies based on genre
 function showMoviesByGenre(genre) {
-    selectedGenre = genre;  // Update selected genre
-    const apiUrl = (selectedColor === 'all')
-        ? `https://api.cosmicjs.com/v3/buckets/fita-production/objects?pretty=true&query=%7B%22type%22:%22movies%22,%22metadata.genero%22:%22${genre}%22%7D&limit=200&read_key=nMpklsOUy4PFd7cy1DtpXwvKDAst2IXyCGC4I4x2cDynYnbkUF&depth=1&props=slug,title,metadata,id,`
-        : `https://api.cosmicjs.com/v3/buckets/fita-production/objects?pretty=true&query=%7B%22type%22:%22movies%22,%22metadata.genero%22:%22${genre}%22,%22metadata.cor.key%22:%22${selectedColor}%22%7D&limit=200&read_key=nMpklsOUy4PFd7cy1DtpXwvKDAst2IXyCGC4I4x2cDynYnbkUF&depth=1&props=slug,title,metadata,id,`;
-
-    // Call fetchMovies with both color and sorting options
-    fetchMovies(apiUrl, selectedSorting, selectedColor);
+    // Verifique se a opção selecionada é "Todos"
+    if (genre === 'Todos') {
+        // Lógica para mostrar todos os filmes, sem restrição de gênero
+        const apiUrl = 'https://api.cosmicjs.com/v3/buckets/fita-production/objects?pretty=true&query=%7B%22type%22:%22movies%22%7D&limit=200&read_key=nMpklsOUy4PFd7cy1DtpXwvKDAst2IXyCGC4I4x2cDynYnbkUF&depth=1&props=slug,title,metadata,id,';
+        fetchMovies(apiUrl, selectedSorting, selectedColor);
+    } else {
+        // Lógica para mostrar filmes do gênero específico
+        const apiUrl = (selectedColor === 'all')
+            ? `https://api.cosmicjs.com/v3/buckets/fita-production/objects?pretty=true&query=%7B%22type%22:%22movies%22,%22metadata.genero%22:%22${genre}%22%7D&limit=200&read_key=nMpklsOUy4PFd7cy1DtpXwvKDAst2IXyCGC4I4x2cDynYnbkUF&depth=1&props=slug,title,metadata,id,`
+            : `https://api.cosmicjs.com/v3/buckets/fita-production/objects?pretty=true&query=%7B%22type%22:%22movies%22,%22metadata.genero%22:%22${genre}%22,%22metadata.cor.key%22:%22${selectedColor}%22%7D&limit=200&read_key=nMpklsOUy4PFd7cy1DtpXwvKDAst2IXyCGC4I4x2cDynYnbkUF&depth=1&props=slug,title,metadata,id,`;
+        fetchMovies(apiUrl, selectedSorting, selectedColor);
+    }
 }
-
-
-
-
 
 // Function to show movies based on color
 function showMoviesByColor(color) {
-    selectedColor = color;  // Update selected color
-    const apiUrl = (color === 'all')
-        ? 'https://api.cosmicjs.com/v3/buckets/fita-production/objects?pretty=true&query=%7B%22type%22:%22movies%22%7D&limit=200&read_key=nMpklsOUy4PFd7cy1DtpXwvKDAst2IXyCGC4I4x2cDynYnbkUF&depth=1&props=slug,title,metadata,id,'
-        : `https://api.cosmicjs.com/v3/buckets/fita-production/objects?pretty=true&query=%7B%22type%22:%22movies%22,%22metadata.cor.key%22:%22${color}%22%7D&limit=200&read_key=nMpklsOUy4PFd7cy1DtpXwvKDAst2IXyCGC4I4x2cDynYnbkUF&depth=1&props=slug,title,metadata,id,`;
-
-    fetchMovies(apiUrl, selectedSorting, color);
+    // Verifique se a opção selecionada é "Todas"
+    if (color === 'Todas') {
+        // Lógica para mostrar todos os filmes, sem restrição de cor
+        const apiUrl = 'https://api.cosmicjs.com/v3/buckets/fita-production/objects?pretty=true&query=%7B%22type%22:%22movies%22%7D&limit=200&read_key=nMpklsOUy4PFd7cy1DtpXwvKDAst2IXyCGC4I4x2cDynYnbkUF&depth=1&props=slug,title,metadata,id,';
+        fetchMovies(apiUrl, selectedSorting, 'Todas');  // Aqui, 'Todas' é a cor padrão quando a opção "Todas" é selecionada
+    } else {
+        // Lógica para mostrar filmes da cor específica
+        const apiUrl = `https://api.cosmicjs.com/v3/buckets/fita-production/objects?pretty=true&query=%7B%22type%22:%22movies%22,%22metadata.cor.key%22:%22${color}%22%7D&limit=200&read_key=nMpklsOUy4PFd7cy1DtpXwvKDAst2IXyCGC4I4x2cDynYnbkUF&depth=1&props=slug,title,metadata,id,`;
+        fetchMovies(apiUrl, selectedSorting, color);
+    }
 }
-
-
 
 
 // Helper function to create an option element with an event listener
@@ -227,3 +229,5 @@ fetchMovies('https://api.cosmicjs.com/v3/buckets/fita-production/objects?pretty=
 
 // Call fetchMovies to initially load movies
 showFilmes('all');
+
+
