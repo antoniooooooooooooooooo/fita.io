@@ -28,10 +28,10 @@
               <div id="search-container">
               <input type="text" id="search-input" placeholder="Procurar filme...">
               </div>
-                <button class="special" onclick="showOptions('years')">Décadas</button>
-                <button class="special" onclick="showOptions('colors')">Cor</button>
-                <button class="special" onclick="showOptions('genres')">Género</button>
-
+              <button class="special" onclick="showOptions('years')" data-option="years">Décadas</button>
+              <button class="special" onclick="showOptions('colors')" data-option="colors">Cor</button>
+              <button class="special" onclick="showOptions('genres')" data-option="genres">Género</button>
+              
                 <select class="special" id="sorting-select" onchange="handleSortingChange()">
                     <option disabled selected value="">Ordenar por</option>
                 <option value="year">Ano</option>

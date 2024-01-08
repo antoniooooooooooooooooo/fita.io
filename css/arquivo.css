@@ -245,6 +245,10 @@ hr {
     margin-right: 11em;
 }
 
+.special.underline,
+.underline {
+    text-decoration: underline;
+}
 
 
 @media only screen and (max-width: 750px) {
