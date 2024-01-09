@@ -196,7 +196,6 @@ function updateSelectedOption(optionType, value) {
 
 
 // Function to show movies based on search
-// Function to show movies based on search
 function showMoviesBySearch() {
     // Get the search input value
     const searchTerm = document.getElementById('search-input').value;
@@ -207,26 +206,13 @@ function showMoviesBySearch() {
     fetchMovies(apiUrl);
 }
 
-// Function to handle sorting change
-function handleSortingChange() {
-    const sortingSelect = document.getElementById('sorting-select');
-    selectedSorting = sortingSelect.value;  // Update selected sorting
+// Add an event listener to the search input for the 'input' event
+document.getElementById('search-input').addEventListener('input', function () {
+    // Call the showMoviesBySearch function whenever the input changes
+    showMoviesBySearch();
+});
 
-    // Replace the API URL with the appropriate one for your use case
-    const apiUrl = (selectedColor === 'all')
-        ? 'https://api.cosmicjs.com/v3/buckets/fita-production/objects?pretty=true&query=%7B%22type%22:%22movies%22%7D&limit=300&read_key=nMpklsOUy4PFd7cy1DtpXwvKDAst2IXyCGC4I4x2cDynYnbkUF&depth=1&props=slug,title,metadata,id,'
-        : `https://api.cosmicjs.com/v3/buckets/fita-production/objects?pretty=true&query=%7B%22type%22:%22movies%22,%22metadata.cor.key%22:%22${selectedColor}%22%7D&limit=300&read_key=nMpklsOUy4PFd7cy1DtpXwvKDAst2IXyCGC4I4x2cDynYnbkUF&depth=1&props=slug,title,metadata,id,`;
-
-    // Call fetchMovies with both color and sorting options
-    fetchMovies(apiUrl, selectedSorting, selectedColor);
-
-    // If the sorting option is 'title' or 'year', fetch the movies and apply sorting
-    if (selectedSorting === 'title' || selectedSorting === 'year') {
-        fetchMovies(apiUrl, selectedSorting, selectedColor);
-    }
-}
-
-function fetchMovies(apiUrl, sortingOption, filterOption) {
+function fetchMovies(apiUrl, sortingOption) {
     fetch(apiUrl)
         .then(response => response.json())
         .then(data => {
@@ -255,7 +241,8 @@ function fetchMovies(apiUrl, sortingOption, filterOption) {
 
                 // Create a link to the movie details page
                 const movieLink = document.createElement('a');
-                movieLink.href = `/fita.io/pastas/arquivo/individual/index.html?slug=${movie.id}`;
+                movieLink.href = `/fita.io/pastas/individual/index.html?slug=${movie.id}`;
+
                 movieLink.innerHTML = `<img src="${movie.metadata.photo.url}" alt="${movie.title}">`;
 
                 // Append the link to the movie item
@@ -268,8 +255,31 @@ function fetchMovies(apiUrl, sortingOption, filterOption) {
         .catch(error => console.error('Error fetching data:', error));
 }
 
+// Function to handle sorting change
+// Function to handle sorting change
+// Function to handle sorting change
+function handleSortingChange() {
+    const sortingSelect = document.getElementById('sorting-select');
+    selectedSorting = sortingSelect.value;  // Update selected sorting
+
+    // Replace the API URL with the appropriate one for your use case
+    const apiUrl = (selectedColor === 'all')
+        ? 'https://api.cosmicjs.com/v3/buckets/fita-production/objects?pretty=true&query=%7B%22type%22:%22movies%22%7D&limit=300&read_key=nMpklsOUy4PFd7cy1DtpXwvKDAst2IXyCGC4I4x2cDynYnbkUF&depth=1&props=slug,title,metadata,id,'
+        : `https://api.cosmicjs.com/v3/buckets/fita-production/objects?pretty=true&query=%7B%22type%22:%22movies%22,%22metadata.cor.key%22:%22${selectedColor}%22%7D&limit=300&read_key=nMpklsOUy4PFd7cy1DtpXwvKDAst2IXyCGC4I4x2cDynYnbkUF&depth=1&props=slug,title,metadata,id,`;
+
+    // Call fetchMovies with both color and sorting options
+    fetchMovies(apiUrl, selectedSorting, selectedColor);
+
+    // If the sorting option is 'title' or 'year', fetch the movies and apply sorting
+    if (selectedSorting === 'title' || selectedSorting === 'year') {
+        fetchMovies(apiUrl, selectedSorting, selectedColor);
+    }
+}
+
+
 // Call fetchMovies to initially load movies with random sorting
 fetchMovies('https://api.cosmicjs.com/v3/buckets/fita-production/objects?pretty=true&query=%7B%22type%22:%22movies%22%7D&limit=300&read_key=nMpklsOUy4PFd7cy1DtpXwvKDAst2IXyCGC4I4x2cDynYnbkUF&depth=1&props=slug,title,metadata,id');
+
 
 // Call fetchMovies to initially load movies
 showFilmes('all');
