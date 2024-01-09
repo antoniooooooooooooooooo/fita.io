@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     // Criar um link para a página de detalhes do filme
                     const movieLink = document.createElement('a');
-                    movieLink.href = `individual.html?slug=${movie.id}`;
+                    movieLink.href = `pastas/individual/index.html?slug=${movie.id}`;
 
                     // Criar um elemento para a imagem do filme
                     const movieImage = document.createElement('img');
