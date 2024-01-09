@@ -241,7 +241,7 @@ function fetchMovies(apiUrl, sortingOption) {
 
                 // Create a link to the movie details page
                 const movieLink = document.createElement('a');
-                movieLink.href = ``;
+                movieLink.href = `pastas/arquivo/index.html?slug=${movie.id}`;
  // Pass the movie slug as a query parameter
                 movieLink.innerHTML = `<img src="${movie.metadata.photo.url}" alt="${movie.title}">`;
 
