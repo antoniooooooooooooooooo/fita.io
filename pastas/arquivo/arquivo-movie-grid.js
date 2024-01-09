@@ -1,4 +1,3 @@
-// Function to show movies based on color
 function showFilmes(filmes, color) {
     // Fetch data from the API
     const apiUrl = filmes === 'all'
@@ -242,7 +241,6 @@ function fetchMovies(apiUrl, sortingOption) {
                 // Create a link to the movie details page
                 const movieLink = document.createElement('a');
                 movieLink.href = `/fita.io/pastas/individual/index.html?slug=${movie.id}`;
-
                 movieLink.innerHTML = `<img src="${movie.metadata.photo.url}" alt="${movie.title}">`;
 
                 // Append the link to the movie item
