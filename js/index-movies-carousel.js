@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     swiperSlide.className = 'swiper-slide';
 
                     const movieLink = document.createElement('a');
-                    movieLink.href = `pastas/individual/index.html?slug=${movie.id}`;
+                    movieLink.href = `pastas/arquivo/individual/index.html?slug=${movie.id}`;
 
                     const movieCover = document.createElement('img');
                     movieCover.src = movie.metadata.photo.url || '';
