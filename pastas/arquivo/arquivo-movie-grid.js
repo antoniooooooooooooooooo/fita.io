@@ -241,7 +241,7 @@ function fetchMovies(apiUrl, sortingOption) {
 
                 // Create a link to the movie details page
                 const movieLink = document.createElement('a');
-                movieLink.href = `individual/index.html?slug=${movie.id}`;
+                movieLink.href = `/individual/?slug=${movie.id}`;
                 movieLink.innerHTML = `<img src="${movie.metadata.photo.url}" alt="${movie.title}">`;
 
                 // Append the link to the movie item
