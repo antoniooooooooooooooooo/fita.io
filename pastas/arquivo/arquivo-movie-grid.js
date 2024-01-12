@@ -1,5 +1,5 @@
 function showFilmes(filmes, color) {
-    // Obter dados da API
+    // Fetch data from the API
     const apiUrl = filmes === 'all'
         ? 'https://api.cosmicjs.com/v3/buckets/fita-production/objects?pretty=true&query=%7B%22type%22:%22movies%22%7D&limit=300&read_key=nMpklsOUy4PFd7cy1DtpXwvKDAst2IXyCGC4I4x2cDynYnbkUF&depth=1&props=slug,title,metadata,id,'
         : 'https://api.cosmicjs.com/v3/buckets/fita-production/objects?pretty=true&query=%7B%22type%22:%22movies%22,%22metadata.cor%22:%22' + color + '%22%7D&limit=300&read_key=nMpklsOUy4PFd7cy1DtpXwvKDAst2IXyCGC4I4x2cDynYnbkUF&depth=1&props=slug,title,metadata,id,';
@@ -7,28 +7,28 @@ function showFilmes(filmes, color) {
     fetchMovies(apiUrl);
 }
 
-// Inicializar uma variável para controlar o contentor de opções atual
+// Initialize a variable to keep track of the current option container
 let currentOptionsContainer = null;
 
 function showOptions(optionType) {
-    // Referência ao contentor de opções
+    // Reference to the container for options
     const optionsContainer = document.getElementById('optionsContainer');
 
-    // Remover a classe de sublinhado de todos os botões
+    // Remove underline class from all buttons
     const buttons = document.querySelectorAll('.special');
     buttons.forEach(button => {
         button.classList.remove('underline');
     });
 
-    // Alternar a visibilidade do contentor de opções
+    // Toggle visibility of the options container
     if (optionsContainer.style.display === 'none' || optionsContainer.style.display === '') {
-        // Mostrar o contentor de opções
+        // Show the options container
         optionsContainer.style.display = 'block';
 
-        // Limpar opções anteriores
+        // Clear previous options
         optionsContainer.innerHTML = '';
 
-        // Adicionar as opções com base no tipo selecionado
+        // Add the options based on the selected type
         switch (optionType) {
             case 'years':
                 const years = ['1950s', '1960s', '1970s', '1980s', '1990s', '2000s', '2010s', '2020s'];
@@ -62,17 +62,17 @@ function showOptions(optionType) {
             case 'genres':
                 const genres = ['Ação', 'Comédia', 'Documentário', 'Drama', 'Musical', 'Aventura', 'Terror', 'Biografia', 'Animação', 'Romance', 'Sci-fi', 'Mistério'];
 
-                // Criar um contentor flexível para os géneros
+                // Create a flex container for genres
                 const genresOptionsContainer = document.createElement('div');
                 genresOptionsContainer.style.display = 'flex';
-                // Permitir que os géneros quebrem para a linha seguinte, se necessário
+                // Allow genres to wrap to the next line if needed
 
                 genres.forEach(genre => {
                     const genreOption = createOptionElement(genre, showMoviesByGenre);
                     genresOptionsContainer.appendChild(genreOption);
                 });
 
-                // Anexar o contentor de géneros ao contentor principal de opções
+                // Append the genres container to the main options container
                 optionsContainer.appendChild(genresOptionsContainer);
                 break;
 
@@ -80,14 +80,14 @@ function showOptions(optionType) {
                 break;
         }
 
-        // Chamar showFilmes com 'all' para exibir os filmes padrão
+        // Call showFilmes with 'all' to display the default movies
         showFilmes('all');
     } else {
-        // Esconder o contentor de opções
+        // Hide the options container
         optionsContainer.style.display = 'none';
     }
 
-    // Adicionar a classe de sublinhado ao botão selecionado
+    // Add underline class to the selected button
     const selectedButton = document.querySelector(`.special[data-option="${optionType}"]`);
     if (selectedButton) {
         selectedButton.classList.add('underline');
@@ -95,46 +95,46 @@ function showOptions(optionType) {
 }
 
 
-// Função para mostrar filmes com base na cor
-// Função para mostrar filmes com base na cor
-// Função para mostrar filmes com base na cor
+// Function to show movies based on color
+// Function to show movies based on color
+// Function to show movies based on color
 let selectedColor = 'all';
 let selectedGenre = 'all';
 let selectedYearRange = 'all';
 let selectedSorting = '';
-// Função para mostrar filmes com base no intervalo de anos
-// Função para mostrar filmes com base no intervalo de anos
-// Função para mostrar filmes com base no intervalo de anos
+// Function to show movies based on year range
+// Function to show movies based on year range
+// Function to show movies based on year range
 function showMoviesByYearRange(yearRange) {
     const startYear = parseInt(yearRange);
     const endYear = startYear + 9;
 
-    // Obter dados da API com base no intervalo de anos, cor e opção de ordenação selecionada
+    // Fetch data from the API based on the selected year range, color, and sorting option
     const apiUrl = (selectedYearRange === 'all')
         ? `https://api.cosmicjs.com/v3/buckets/fita-production/objects?pretty=true&query=%7B%22type%22:%22movies%22,%22metadata.ano%22:%7B%22$gte%22:${startYear},%22$lte%22:${endYear}%7D%7D&limit=300&read_key=nMpklsOUy4PFd7cy1DtpXwvKDAst2IXyCGC4I4x2cDynYnbkUF&depth=1&props=slug,title,metadata,id,`
         : `https://api.cosmicjs.com/v3/buckets/fita-production/objects?pretty=true&query=%7B%22type%22:%22movies%22,%22metadata.ano%22:%7B%22$gte%22:${startYear},%22$lte%22:${endYear}%7D,%22metadata.cor.key%22:%22${selectedColor}%22%7D&limit=300&read_key=nMpklsOUy4PFd7cy1DtpXwvKDAst2IXyCGC4I4x2cDynYnbkUF&depth=1&props=slug,title,metadata,id,`;
 
-    // Chamar fetchMovies com opções de cor e ordenação
+    // Call fetchMovies with both color and sorting options
     fetchMovies(apiUrl, selectedSorting, selectedYearRange);
 
-    // Atualizar o estilo para a opção selecionada
+    // Update styling for selected option
     updateSelectedOption('years', yearRange);
 }
 
-// Adicionar esta função para atualizar o estilo para a opção selecionada
-// Função para atualizar o estilo para a opção selecionada
+// Add this function to update the styling for the selected option
+// Function to update the styling for the selected optio
 
 
 
-// Função para mostrar filmes com base no género
-// Função para mostrar filmes com base no género
+// Function to show movies based on genre
+// Function to show movies based on genre
 function showMoviesByGenre(genre) {
    
     const apiUrl = (selectedGenre === 'all')
         ? `https://api.cosmicjs.com/v3/buckets/fita-production/objects?pretty=true&query=%7B%22type%22:%22movies%22,%22metadata.genero%22:%22${genre}%22%7D&limit=300&read_key=nMpklsOUy4PFd7cy1DtpXwvKDAst2IXyCGC4I4x2cDynYnbkUF&depth=1&props=slug,title,metadata,id,`
         : `https://api.cosmicjs.com/v3/buckets/fita-production/objects?pretty=true&query=%7B%22type%22:%22movies%22,%22metadata.genero%22:%22${genre}%22,%22metadata.cor.key%22:%22${selectedColor}%22%7D&limit=300&read_key=nMpklsOUy4PFd7cy1DtpXwvKDAst2IXyCGC4I4x2cDynYnbkUF&depth=1&props=slug,title,metadata,id,`;
 
-    // Chamar fetchMovies com opções de cor e ordenação
+    // Call fetchMovies with both color and sorting options
     fetchMovies(apiUrl, selectedSorting, selectedGenre);
 }
 
@@ -142,9 +142,9 @@ function showMoviesByGenre(genre) {
 
 
 
-// Função para mostrar filmes com base na cor
+// Function to show movies based on color
 function showMoviesByColor(color) {
-    selectedColor = color;  // Atualizar a cor selecionada
+    selectedColor = color;  // Update selected color
     const apiUrl = (color === 'all')
         ? 'https://api.cosmicjs.com/v3/buckets/fita-production/objects?pretty=true&query=%7B%22type%22:%22movies%22%7D&limit=300&read_key=nMpklsOUy4PFd7cy1DtpXwvKDAst2IXyCGC4I4x2cDynYnbkUF&depth=1&props=slug,title,metadata,id,'
         : `https://api.cosmicjs.com/v3/buckets/fita-production/objects?pretty=true&query=%7B%22type%22:%22movies%22,%22metadata.cor.key%22:%22${color}%22%7D&limit=300&read_key=nMpklsOUy4PFd7cy1DtpXwvKDAst2IXyCGC4I4x2cDynYnbkUF&depth=1&props=slug,title,metadata,id,`;
@@ -155,38 +155,38 @@ function showMoviesByColor(color) {
 
 
 
-// Função auxiliar para criar um elemento de opção com um gestor de eventos
+// Helper function to create an option element with an event listener
 function createOptionElement(value, clickHandler) {
     const optionElement = document.createElement('span');
     optionElement.className = 'option';
     optionElement.textContent = value;
     optionElement.innerHTML = value.replace('-', '&#8209;');
-    // Adicionar um gestor de eventos para chamar o gestor de cliques especificado com o valor correspondente
+    // Add event listener to call the specified click handler with the corresponding value
     optionElement.addEventListener('click', () => clickHandler(value));
 
     return optionElement;
 }
 
 function updateSelectedOption(optionType, value) {
-    // Remover a classe de sublinhado de todas as opções
+    // Remove underline class from all options
     const options = document.querySelectorAll('.option');
     options.forEach(option => {
         option.classList.remove('underline');
     });
 
-    // Adicionar a classe de sublinhado à opção selecionada
+    // Add underline class to the selected option
     const selectedOption = document.querySelector(`.option[data-type="${optionType}"][data-index="${value}"]`);
     if (selectedOption) {
         selectedOption.classList.add('underline');
     }
 
-    // Remover a classe de sublinhado de todos os botões
+    // Remove underline class from all buttons
     const buttons = document.querySelectorAll('.special');
     buttons.forEach(button => {
         button.classList.remove('underline');
     });
 
-    // Adicionar a classe de sublinhado ao botão selecionado
+    // Add underline class to the selected button
     const selectedButton = document.querySelector(`.special[data-option="${optionType}"]`);
     if (selectedButton) {
         selectedButton.classList.add('underline');
@@ -194,20 +194,20 @@ function updateSelectedOption(optionType, value) {
 }
 
 
-// Função para mostrar filmes com base na pesquisa
+// Function to show movies based on search
 function showMoviesBySearch() {
-    // Obter o valor de pesquisa de entrada
+    // Get the search input value
     const searchTerm = document.getElementById('search-input').value;
 
-    // Obter dados da API com base no termo de pesquisa introduzido
+    // Fetch data from the API based on the entered search term
     const apiUrl = `https://api.cosmicjs.com/v3/buckets/fita-production/objects?pretty=true&query=%7B%22type%22:%22movies%22,%22title%22:%7B%22$regex%22:%22${searchTerm}%22,%22$options%22:%22i%22%7D%7D&limit=300&read_key=nMpklsOUy4PFd7cy1DtpXwvKDAst2IXyCGC4I4x2cDynYnbkUF&depth=1&props=slug,title,metadata,id,`;
 
     fetchMovies(apiUrl);
 }
 
-// Adicionar um gestor de eventos à entrada de pesquisa para o evento 'input'
+// Add an event listener to the search input for the 'input' event
 document.getElementById('search-input').addEventListener('input', function () {
-    // Chamar a função showMoviesBySearch sempre que a entrada mudar
+    // Call the showMoviesBySearch function whenever the input changes
     showMoviesBySearch();
 });
 
@@ -215,65 +215,69 @@ function fetchMovies(apiUrl, sortingOption) {
     fetch(apiUrl)
         .then(response => response.json())
         .then(data => {
-            // Ordenar filmes com base na opção de ordenação selecionada
+            // Sort movies based on the selected sorting option
             let sortedMovies;
             if (sortingOption === 'year') {
                 sortedMovies = data.objects.sort((a, b) => a.metadata.ano - b.metadata.ano);
             } else if (sortingOption === 'title') {
                 sortedMovies = data.objects.sort((a, b) => a.title.localeCompare(b.title));
             } else {
-                // Exibir filmes aleatoriamente quando nenhuma opção de ordenação é selecionada
+                // Display movies randomly when no sorting option is selected
                 sortedMovies = data.objects.sort(() => Math.random() - 0.5);
             }
 
-            // Referência ao contentor da grelha
+            // Reference to the grid container
             const gridContainer = document.querySelector('.grid-container');
 
-            // Limpar filmes anteriores
+            // Clear previous movies
             gridContainer.innerHTML = '';
 
-            // Iterar por cada filme e criar um item de filme
+            // Loop through each movie and create a movie item
             sortedMovies.forEach(movie => {
-                // Criar um item de filme
+                // Create a movie item
                 const movieItem = document.createElement('div');
                 movieItem.className = 'movie-item';
 
-                // Criar um link para a página de detalhes do filme
+                // Create a link to the movie details page
                 const movieLink = document.createElement('a');
                 movieLink.href = `individual/index.html?slug=${movie.id}`;
                 movieLink.innerHTML = `<img src="${movie.metadata.photo.url}" alt="${movie.title}">`;
 
-// Adiciona o link ao elemento de filme
-movieItem.appendChild(movieLink);
+                // Append the link to the movie item
+                movieItem.appendChild(movieLink);
 
-// Adiciona o elemento de filme ao contentor da grelha
-gridContainer.appendChild(movieItem);
-});
-})
-.catch(error => console.error('Erro ao obter dados:', error));
+                // Append the movie item to the grid container
+                gridContainer.appendChild(movieItem);
+            });
+        })
+        .catch(error => console.error('Error fetching data:', error));
 }
 
-// Função para lidar com a alteração de ordenação
+// Function to handle sorting change
+// Function to handle sorting change
+// Function to handle sorting change
 function handleSortingChange() {
-const sortingSelect = document.getElementById('sorting-select');
-selectedSorting = sortingSelect.value;  // Atualiza a ordenação selecionada
+    const sortingSelect = document.getElementById('sorting-select');
+    selectedSorting = sortingSelect.value;  // Update selected sorting
 
-// Substitui o URL da API pelo apropriado para o seu caso de uso
-const apiUrl = (selectedColor === 'all')
-    ? 'https://api.cosmicjs.com/v3/buckets/fita-production/objects?pretty=true&query=%7B%22type%22:%22movies%22%7D&limit=300&read_key=nMpklsOUy4PFd7cy1DtpXwvKDAst2IXyCGC4I4x2cDynYnbkUF&depth=1&props=slug,title,metadata,id,'
-    : `https://api.cosmicjs.com/v3/buckets/fita-production/objects?pretty=true&query=%7B%22type%22:%22movies%22,%22metadata.cor.key%22:%22${selectedColor}%22%7D&limit=300&read_key=nMpklsOUy4PFd7cy1DtpXwvKDAst2IXyCGC4I4x2cDynYnbkUF&depth=1&props=slug,title,metadata,id,`;
+    // Replace the API URL with the appropriate one for your use case
+    const apiUrl = (selectedColor === 'all')
+        ? 'https://api.cosmicjs.com/v3/buckets/fita-production/objects?pretty=true&query=%7B%22type%22:%22movies%22%7D&limit=300&read_key=nMpklsOUy4PFd7cy1DtpXwvKDAst2IXyCGC4I4x2cDynYnbkUF&depth=1&props=slug,title,metadata,id,'
+        : `https://api.cosmicjs.com/v3/buckets/fita-production/objects?pretty=true&query=%7B%22type%22:%22movies%22,%22metadata.cor.key%22:%22${selectedColor}%22%7D&limit=300&read_key=nMpklsOUy4PFd7cy1DtpXwvKDAst2IXyCGC4I4x2cDynYnbkUF&depth=1&props=slug,title,metadata,id,`;
 
-// Chama fetchMovies com opções de cor e ordenação
-fetchMovies(apiUrl, selectedSorting, selectedColor);
-
-// Se a opção de ordenação for 'title' ou 'year', obtenha os filmes e aplique a ordenação
-if (selectedSorting === 'title' || selectedSorting === 'year') {
+    // Call fetchMovies with both color and sorting options
     fetchMovies(apiUrl, selectedSorting, selectedColor);
-}
+
+    // If the sorting option is 'title' or 'year', fetch the movies and apply sorting
+    if (selectedSorting === 'title' || selectedSorting === 'year') {
+        fetchMovies(apiUrl, selectedSorting, selectedColor);
+    }
 }
 
-// Chama fetchMovies para carregar inicialmente os filmes com ordenação aleatória
-fetchMovies('https://api.cosmicjs.com/v3/buckets/fita-production/objects?pretty=true&query=%7B%22type%22:%22movies%22%7D&limit=300&read_key=nMpklsOUy4PFd7cy1DtpXwvKDAst2IXyCGC4I4x2cDynYnbkUF&depth=1&props=slug,title,metadata,id/');
 
-// Chama fetchMovies para carregar inicialmente os filmes
+// Call fetchMovies to initially load movies with random sorting
+fetchMovies('https://api.cosmicjs.com/v3/buckets/fita-production/objects?pretty=true&query=%7B%22type%22:%22movies%22%7D&limit=300&read_key=nMpklsOUy4PFd7cy1DtpXwvKDAst2IXyCGC4I4x2cDynYnbkUF&depth=1&props=slug,title,metadata,id');
+
+
+// Call fetchMovies to initially load movies
 showFilmes('all');
